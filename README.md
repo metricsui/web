@@ -2,7 +2,8 @@
 
 ---
 
-# svelte app
+# MetricsUI - svelte app
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bf535fae-c7f7-4af5-b16f-d4a85b33394f/deploy-status)](https://app.netlify.com/sites/metricsui/deploys)
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
@@ -15,6 +16,10 @@ cd svelte-app
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
+
+## Development flow
+All development process will occur in the `develop` branch and we will adopt trunk-based development model with the branch `master` as the currently live version of the project.
+To deploy to production, simply make a pull request from `develop` to `master`.
 
 ## Get started
 
@@ -71,6 +76,7 @@ Or remove the script via:
 ```bash
 rm scripts/setupTypeScript.js
 ```
+
 
 ## Deploying to the web
 
