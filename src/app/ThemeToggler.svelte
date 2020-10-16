@@ -9,10 +9,10 @@
 
 <style>
   button {
+    position: absolute;
+    top: 0;
+    right: 5%;
     margin-top: 1rem;
-    width: 10rem;
-    height: 3rem;
-    border-radius: 1000px;
   }
 </style>
 

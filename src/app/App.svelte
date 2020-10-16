@@ -1,5 +1,5 @@
 <script>
-  import ThemeToggler from './ThemeToggler.svelte'
+  import Landing from './landing/Landing.svelte'
 </script>
 
 <style>
@@ -8,132 +8,173 @@
     position: relative;
     width: 100%;
     height: 100%;
+    font-size: 16px;
   }
 
   :root {
+    /* Theme Agnostic Colors */
+    --font-family: 'Rubik';
+    --cerise-color: #d8315b;
+    --claret-color: #781f46;
+    --optimistic-blue-color: #1976d2;
+    --prussian-blue-color: ##0d46a1;
+
+    /* Theme Agnostic Variables */
+    --green-blue-crayola-color: #3e92cc;
+    --primary-color: var(--cerise-color);
+    --primary-variant-color: var(--claret-color);
+    --secondary-color: var(--optimistic-blue-color);
+    --secondary-variant-color: var(--prussian-blue-color);
+
+    --h1-size: 6rem;
+    --h2-size: 3.75rem;
+    --h3-size: 3rem;
+    --h4-size: 2.125rem;
+    --h5-size: 1.5rem;
+    --h6-size: 1.25rem;
+    --subtitle1-size: 16px;
+    --subtitle2-size: 14px;
+    --body1-size: 16px;
+    --body2-size: 14px;
+    --button-size: 14px;
+    --caption-size: 12px;
+    --overline-size: 10px;
+
+    /* Theme Dependent Variables */
     --bg-color: #ffffff;
     --text-color: #000000;
-    --royal-blue-dark-color: #0a2463;
-    --cerise-color: #d8315b;
-    --eggshell-color: #faf3dd;
-    --green-blue-crayola-color: #3e92cc;
-    --primary-color: var(--royal-blue-dark-color);
-    --primary-variant-color: var(--cerise-color);
-    --secondary-color: var(--eggshell-color);
-    --secondary-variant-color: var(--green-blue-crayola-color);
     --on-primary-color: #ffffff;
     --on-secondary-color: #ffffff;
+  }
 
-    --display-size: 36px;
-    --headline-size: 24px;
-    --title-size: 20px;
-    --body-size: 14px;
+  @media screen and (max-width: 640px) {
+    :global(:root) {
+      --h1-size: 4rem;
+    }
   }
 
   :global(body) {
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Rubik', sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
     padding: 0;
     margin: 0;
-    font-size: 14px;
     transition: background-color 500ms linear, color 500ms linear;
   }
 
   :global(body.dark) {
-    --bg-color: #000000;
+    --bg-color: #212121;
     --text-color: #ffffff;
   }
 
-  .primary-color {
-    color: var(--royal-blue-dark-color);
+  :global(.primary-color) {
+    color: var(--primary-color);
   }
 
-  .primary-variant-color {
-    color: var(--cerise-color);
+  :global(.primary-variant-color) {
+    color: var(--primary-variant-color);
   }
 
-  .secondary-color {
-    color: var(--eggshell-color);
+  :global(.secondary-color) {
+    color: var(--secondary-color);
   }
 
-  .secondary-variant-color {
-    color: var(--green-blue-crayola-color);
+  :global(.secondary-variant-color) {
+    color: var(--secondary-variant-color);
   }
 
-  .light-text {
+  :global(.light-text) {
     font-weight: 300;
   }
 
-  .bold-text {
+  :global(.bold-text) {
     font-weight: 700;
   }
 
-  h1,
-  h2,
-  h3 {
+  :global(h1),
+  :global(h2),
+  :global(h3) {
     margin-block-start: 0;
     margin-block-end: 0;
   }
 
-  h1,
-  .display-title {
-    font-size: var(--display-size);
+  :global(h1) {
+    font-size: var(--h1-size);
   }
 
-  h2,
-  .headline-title {
-    font-size: var(--headline-size);
+  :global(h2) {
+    font-size: var(--h2-size);
   }
 
-  h3,
-  .title {
-    font-size: var(--title-size);
+  :global(h3) {
+    font-size: var(--h3-size);
   }
 
-  .body {
+  :global(h4) {
+    font-size: var(--h4-size);
+  }
+
+  :global(h5) {
+    font-size: var(--h5-size);
+  }
+
+  :global(h6) {
+    font-size: var(--h6-size);
+  }
+
+  :global(.body) {
     font-size: var(--body-size);
   }
 
-  :global(button) {
-    background-color: var(--primary-variant-color);
+  :global(.font-light) {
+    font-weight: 300;
+  }
+
+  :global(.font-normal) {
+    font-weight: 400;
+  }
+
+  :global(.font-bold) {
+    font-weight: 700;
+  }
+
+  :global(button),
+  :global(.primary-button) {
+    background-color: var(--primary-color);
     color: var(--on-primary-color);
     border: none;
-    padding: 0.3rem 0.7rem;
     border-radius: 8px;
     font-size: var(--body-size);
+    width: min(160px, 50vw);
+    min-height: 40px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 108px;
   }
 
-  :global(button:focus) {
+  :global(button:focus),
+  :global(.primary-button:focus) {
     outline: none;
   }
 
   /* TODO(adalberht): Refactor main to different component */
   main {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     min-height: 100%;
     text-align: center;
     margin: 0 auto;
+    overflow-x: hidden;
   }
 </style>
 
-<svelte:head>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;700&display=swap"
-    rel="stylesheet" />
-</svelte:head>
-
 <main>
   <!-- TODO(adalberht): Refactor this main-->
-  <div class="title">
-    <h1 class="primary-color">METRICS</h1>
-    <h2 class="secondary-variant-color">
-      Mentoring Initative for
-      <span class="primary-variant-color bold-text">CSUI Students</span>
-    </h2>
-    <ThemeToggler />
-  </div>
+  <Landing />
 </main>
