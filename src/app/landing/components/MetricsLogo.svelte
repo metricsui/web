@@ -3,6 +3,12 @@
     position: relative;
   }
 
+  img {
+    width: min(160px, 80vw);
+    object-fit: fill;
+    margin-left: 0.5rem;
+  }
+
   :global(body.dark) .light-theme-logo {
     display: none;
   }

@@ -67,7 +67,7 @@ export default {
     // the bundle has been generated
     !production &&
       serve({
-        port: 8081,
+        port: 8089,
       }),
 
     // Watch the `public` directory and refresh the
