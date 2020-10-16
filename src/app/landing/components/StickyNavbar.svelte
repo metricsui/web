@@ -1,9 +1,33 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import ThemeToggler from '../../ThemeToggler.svelte'
+
+  let isScrollingDown = false
+  let lastScrollPosition = 0
+  let scrollSubscriptionHandler = () => {
+    const offset = window.pageYOffset || document.documentElement.scrollTop
+    const scrollDown = offset > lastScrollPosition
+    if (isScrollingDown != scrollDown) {
+      isScrollingDown = scrollDown
+      console.log('value changes')
+      document
+        .getElementById('sticky-navbar')
+        .classList.toggle('container-slide-up')
+    }
+    lastScrollPosition = offset
+  }
+
+  onMount(() => {
+    window.document.addEventListener('scroll', scrollSubscriptionHandler)
+  })
+
+  onDestroy(() => {
+    window.document.removeEventListener('scroll', scrollSubscriptionHandler)
+  })
 </script>
 
 <style>
-  .container {
+  #sticky-navbar {
     width: 100%;
     z-index: 10;
     justify-content: space-between;
@@ -13,21 +37,21 @@
     top: 0;
     left: 0;
 
-    transition: 1s;
-    -webkit-transition: 1s;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
 
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
     transform: translateY(0%);
   }
 
-  .container-slide-up {
-    transform: translateY(-100%);
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateX(-100%);
+  :global(#sticky-navbar.container-slide-up) {
+    transform: translateY(-4rem);
+    -webkit-transform: translateY(-4rem);
+    -ms-transform: translateX(-4rem);
   }
 </style>
 
-<div class="container">
+<div class="container" id="sticky-navbar">
   <ThemeToggler />
 </div>
