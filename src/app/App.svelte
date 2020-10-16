@@ -59,7 +59,10 @@
     color: var(--text-color);
     padding: 0;
     margin: 0;
-    transition: background-color 500ms linear, color 500ms linear;
+  }
+
+  :global(body.color-transition) {
+    transition: background-color 1s linear, color 1s linear;
   }
 
   :global(body.dark) {
