@@ -5,7 +5,7 @@
 
 <style>
   .section > * {
-    max-width: 50%;
+    max-width: 800px;
   }
 
   a {
@@ -59,6 +59,10 @@
 
     h1 {
       font-size: 3rem;
+    }
+
+    h6 {
+      font-size: 2rem;
     }
   }
 
