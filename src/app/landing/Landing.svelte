@@ -38,7 +38,11 @@
       align-items: flex-start;
     }
     .section > * {
-      max-width: 75%;
+      max-width: 90%;
+    }
+
+    .wrapper {
+      margin-left: 5%;
     }
   }
 
