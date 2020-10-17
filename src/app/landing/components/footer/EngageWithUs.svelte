@@ -27,9 +27,19 @@
   h6 {
     margin-bottom: 1rem;
   }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 </style>
 
-<div>
+<div class="container">
   <h6>Engage with us</h6>
   <div class="social-media-containers">
     {#each socialMedias as socialMedia, i}

@@ -11,6 +11,11 @@
     width: 33%;
   }
 
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
   .partner-images-container {
     display: flex;
   }
@@ -22,6 +27,15 @@
   @media screen and (max-width: 768px) {
     .container {
       width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .partner-images-container {
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
