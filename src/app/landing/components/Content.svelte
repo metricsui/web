@@ -63,6 +63,7 @@
     }
 
     h6 {
+      margin-top: 0;
       font-size: 2rem;
     }
   }
