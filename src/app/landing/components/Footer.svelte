@@ -9,6 +9,7 @@
     min-height: 25vh;
     background-color: #f1f1f1;
     padding-left: var(--horizontal-margin);
+    padding-bottom: 2rem;
   }
 
   :global(body.dark) footer {

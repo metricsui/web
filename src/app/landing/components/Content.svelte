@@ -25,6 +25,7 @@
     text-align: left;
     line-height: 114%;
     letter-spacing: -1.5px;
+    margin-top: 24px;
   }
 
   h5 {
