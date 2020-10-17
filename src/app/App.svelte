@@ -1,11 +1,5 @@
 <script>
   import Landing from './landing/Landing.svelte'
-
-  const websiteTitle = 'Metrics'
-  const websiteDescription =
-    'Metrics is a mentoring initative for CSUI students by CSUI alumni.'
-  const websiteImage = 'images/logo.png'
-  const websiteAuthor = 'Developed by Metrics'
 </script>
 
 <style>
@@ -185,18 +179,6 @@
     overflow-x: hidden;
   }
 </style>
-
-<svelte:head>
-  <meta name="twitter:title" content={websiteTitle} />
-  <meta name="twitter:description" content={websiteDescription} />
-  <meta name="twitter:image" content={websiteImage} />
-  <meta name="twitter:creator" content={websiteAuthor} />
-  <meta property="og:image" content={websiteImage} />
-  <meta property="og:description" content={websiteDescription} />
-  <meta property="og:title" content={websiteTitle} />
-  <meta name="author" content={websiteAuthor} />
-  <meta name="description" content={websiteDescription} />
-</svelte:head>
 
 <main>
   <!-- TODO(adalberht): Refactor this main-->
