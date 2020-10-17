@@ -41,8 +41,8 @@
     --overline-size: 10px;
 
     /* Theme Dependent Variables */
-    --bg-color: #ffffff;
-    --text-color: #000000;
+    --bg-color: #fafafa;
+    --text-color: #212121;
     --on-primary-color: #ffffff;
     --on-secondary-color: #ffffff;
   }
@@ -67,7 +67,7 @@
 
   :global(body.dark) {
     --bg-color: #212121;
-    --text-color: #ffffff;
+    --text-color: #fafafa;
   }
 
   :global(.primary-color) {

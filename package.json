@@ -31,7 +31,10 @@
     "rollup-plugin-svelte-svg": "^0.2.3"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "sirv-cli": "^1.0.0",
+    "svelte-fa": "^2.1.1",
+    "svelte-icons": "^2.1.0"
   },
   "husky": {
     "hooks": {

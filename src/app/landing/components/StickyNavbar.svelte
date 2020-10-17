@@ -46,9 +46,9 @@
   }
 
   :global(#sticky-navbar.container-slide-up) {
-    transform: translateY(-4rem);
-    -webkit-transform: translateY(-4rem);
-    -ms-transform: translateX(-4rem);
+    transform: translateY(-5rem);
+    -webkit-transform: translateY(-5rem);
+    -ms-transform: translateX(-5rem);
   }
 </style>
 
