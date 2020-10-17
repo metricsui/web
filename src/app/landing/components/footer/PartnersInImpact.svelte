@@ -25,7 +25,7 @@
     margin-bottom: 1rem;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 600px) {
     .container {
       width: 100%;
       min-height: 100vh;

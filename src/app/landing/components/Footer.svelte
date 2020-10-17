@@ -8,8 +8,9 @@
     width: 100vw;
     min-height: 25vh;
     background-color: #f1f1f1;
-    padding-left: var(--horizontal-margin);
-    padding-bottom: 2rem;
+    padding: 0 var(--horizontal-margin);
+    display: flex;
+    align-items: center;
   }
 
   :global(body.dark) footer {
@@ -20,16 +21,22 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
+    .limiter {
+      width: calc(100% - var(--horizontal-margin) - var(--horizontal-margin));
+    }
+  }
+
+  @media screen and (max-width: 600px) {
     footer {
       min-height: 100vh;
     }
 
     .limiter {
       flex-direction: column;
-      width: 80%;
     }
 
     .limiter > * {
