@@ -7,7 +7,7 @@
   let scrollSubscriptionHandler = () => {
     const offset = window.pageYOffset || document.documentElement.scrollTop
     const scrollDown = offset > lastScrollPosition
-    if (isScrollingDown != scrollDown) {
+    if (isScrollingDown != scrollDown && offset !== 0) {
       isScrollingDown = scrollDown
       console.log('value changes')
       document
