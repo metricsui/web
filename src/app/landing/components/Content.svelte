@@ -37,7 +37,11 @@
   }
 
   .wrapper {
-    margin: 0 12%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 var(--horizontal-margin);
   }
 
   @media screen and (max-width: 640px) {
@@ -51,10 +55,6 @@
     }
     .section > * {
       max-width: 90%;
-    }
-
-    .wrapper {
-      margin: 0 10%;
     }
 
     h1 {

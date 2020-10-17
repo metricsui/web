@@ -45,11 +45,14 @@
     --text-color: #212121;
     --on-primary-color: #ffffff;
     --on-secondary-color: #ffffff;
+
+    --horizontal-margin: 12%;
   }
 
   @media screen and (max-width: 640px) {
     :global(:root) {
       --h1-size: 4rem;
+      --horizontal-margin: 10%;
     }
   }
 
