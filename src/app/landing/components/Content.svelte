@@ -83,9 +83,9 @@
   <div class="section">
     <h5>What is Metrics?</h5>
     <div class="body-text">
-      Metrics is mentoring initiative by Computer Science Alumni of Universitas
-      Indonesia that strives to help CS students start-up their career through
-      an extensive and collaborative four-months mentorship program.
+      Metrics is a mentoring initiative by Computer Science Alumni of Universitas Indonesia
+      that strives to help CS students start-up their careers through an extensive and collaborative
+      four-month mentorship program.
     </div>
   </div>
   <div class="section">
@@ -93,8 +93,8 @@
       Want to be notified when the magic happens?
     </h6>
     <div class="button-container">
-      <a href={externalLinks.earlyBirdFormURL} class="primary-button">Let me
-        know</a>
+      <a href={externalLinks.earlyBirdFormURL} class="primary-button">LET ME
+        KNOW</a>
     </div>
   </div>
 </div>
