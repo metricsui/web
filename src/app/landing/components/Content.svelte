@@ -93,7 +93,7 @@
       Want to be notified when the magic happens?
     </h6>
     <div class="button-container">
-      <a href={externalLinks.earlyBirdFormURL} class="primary-button" id="let-me-know-button">LET ME
+      <a href={externalLinks.earlyBirdFormURL} class="primary-button" id="let-me-know-button" target="_blank">LET ME
         KNOW</a>
     </div>
   </div>
