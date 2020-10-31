@@ -34,7 +34,6 @@
     }
 
     .partner-images-container {
-      flex-direction: column;
       align-items: center;
     }
   }
