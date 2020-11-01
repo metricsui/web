@@ -23,4 +23,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Trigger Netlify build
+        env:
+          NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
         run: curl -X POST -d {} $NETLIFY_BUILD_HOOK_URL
