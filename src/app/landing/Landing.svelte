@@ -197,7 +197,7 @@
 
   @media screen and (max-width: 600px) {
     footer {
-      height: 100vh;
+      height: var(--app-height);
       padding-left: 0px;
       padding-right: 0px;
       justify-content: center;
