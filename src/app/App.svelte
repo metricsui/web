@@ -154,7 +154,7 @@
     font-size: var(--body-size);
     width: min(160px, 50vw);
     min-height: 40px;
-    font-weight: 500;
+    font-weight: bold;
     text-align: center;
     letter-spacing: 0.15px;
     text-decoration: none;

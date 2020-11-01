@@ -56,11 +56,10 @@
     position: absolute;
     top: 0.15rem;
     bottom: 0.15rem;
-    left: 2.5%;
-    right: 0.15rem;
     transition: 0.5s;
     -webkit-transition: 0.5s;
     width: 2rem;
+    margin-left: 0.15rem;
   }
   span {
     border-radius: 1rem;
