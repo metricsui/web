@@ -1,29 +1,5 @@
 <script>
-  import { onMount, onDestroy } from 'svelte'
   import ThemeToggler from '../../ThemeToggler.svelte'
-
-  let isScrollingDown = false
-  let lastScrollPosition = 0
-  let scrollSubscriptionHandler = () => {
-    const offset = window.pageYOffset || document.documentElement.scrollTop
-    const scrollDown = offset > lastScrollPosition
-    if (isScrollingDown != scrollDown && offset !== 0) {
-      isScrollingDown = scrollDown
-      console.log('value changes')
-      document
-        .getElementById('sticky-navbar')
-        .classList.toggle('container-slide-up')
-    }
-    lastScrollPosition = offset
-  }
-
-  onMount(() => {
-    window.document.addEventListener('scroll', scrollSubscriptionHandler)
-  })
-
-  onDestroy(() => {
-    window.document.removeEventListener('scroll', scrollSubscriptionHandler)
-  })
 </script>
 
 <style>

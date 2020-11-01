@@ -6,9 +6,15 @@
   :global(html),
   :global(body) {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     font-size: 14px;
+    overflow: hidden;
+    font-family: 'Rubik', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 0;
+    margin: 0;
   }
 
   :root {
@@ -29,7 +35,7 @@
     --h1-size: 6rem;
     --h2-size: 3.75rem;
     --h3-size: 3rem;
-    --h4-size: 2.125rem;
+    --h4-size: 2rem;
     --h5-size: 1.5rem;
     --h6-size: 1.25rem;
     --subtitle1-size: 16px;
@@ -56,16 +62,8 @@
     }
   }
 
-  :global(body) {
-    font-family: 'Rubik', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
-    padding: 0;
-    margin: 0;
-  }
-
-  :global(body.color-transition) {
-    transition: background-color 1s linear, color 1s linear;
+  :global(.color-transition) {
+    transition: background-color 0.5s linear, color 0.5s linear;
   }
 
   :global(body.dark) {
@@ -172,11 +170,11 @@
   /* TODO(adalberht): Refactor main to different component */
   main {
     display: flex;
-    width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
     margin: 0 auto;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 </style>
 
