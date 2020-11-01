@@ -6,10 +6,20 @@
   import EngageWithUs from './components/footer/EngageWithUs.svelte'
   import { externalLinks } from '../constants/externalLinks'
   import { scrollSubscriptionHandler } from './state/scroll'
+  import { onMount } from 'svelte'
 
   function scrollTo(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' })
   }
+
+  onMount(() => {
+    const appHeight = () => {
+      const doc = document.documentElement
+      doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+    }
+    window.addEventListener('resize', appHeight)
+    appHeight()
+  })
 </script>
 
 <style>
@@ -81,22 +91,18 @@
   }
 
   @media screen and (max-width: 640px) {
-    .wrapper {
-      scroll-snap-points-y: repeat(100vh);
-    }
-
     .content-wrapper {
       margin: 0 var(--horizontal-margin);
     }
 
     .section {
       width: 100%;
-      height: 100vh;
+      height: var(--app-height);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      scroll-snap-align: center;
+      scroll-snap-align: start;
       position: relative;
       margin: 0;
     }
@@ -121,17 +127,17 @@
     .mobile-icon {
       display: block;
     }
-  }
 
-  @keyframes slide {
-    0% {
-      bottom: 3rem;
-    }
-    50% {
-      bottom: 0.5rem;
-    }
-    100% {
-      bottom: 3rem;
+    @keyframes slide {
+      0% {
+        bottom: 5%;
+      }
+      50% {
+        bottom: 2.5%;
+      }
+      100% {
+        bottom: 5%;
+      }
     }
   }
 
@@ -146,6 +152,17 @@
     }
     .desktop-arrow-icon {
       display: block;
+    }
+    @keyframes slide {
+      0% {
+        bottom: 5%;
+      }
+      50% {
+        bottom: 7.5%;
+      }
+      100% {
+        bottom: 5%;
+      }
     }
   }
   /* Content CSS ends */
@@ -180,7 +197,7 @@
 
   @media screen and (max-width: 600px) {
     footer {
-      min-height: 100vh;
+      height: 100vh;
       padding-left: 0px;
       padding-right: 0px;
       justify-content: center;

@@ -13,6 +13,7 @@
 
   img {
     object-fit: cover;
+    width: 33%;
   }
 
   .partner-images-container {

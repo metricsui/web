@@ -53,6 +53,9 @@
     --on-secondary-color: #ffffff;
 
     --horizontal-margin: 12%;
+
+    --app-height: -webkit-fill-available;
+    --app-height: 100vh;
   }
 
   @media screen and (max-width: 640px) {
