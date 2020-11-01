@@ -260,8 +260,8 @@
   </div>
   <!-- Content Ends-->
 
-  <footer id="section-4" class="color-transition">
-    <div class="limiter">
+  <footer class="color-transition">
+    <div class="limiter" id="section-4">
       <PartnersInImpact />
       <EngageWithUs />
     </div>

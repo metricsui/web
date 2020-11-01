@@ -40,5 +40,5 @@
   <div class="icon-container">
     <svelte:component this={iconComponent} />
   </div>
-  <a href={url}> {displayText} </a>
+  <a href={url} target="_blank" rel="noopener noreferrer"> {displayText} </a>
 </div>
