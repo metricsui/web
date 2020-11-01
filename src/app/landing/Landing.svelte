@@ -30,7 +30,6 @@
 
     overflow-y: scroll;
     overflow-x: hidden;
-    scroll-snap-type: y mandatory;
   }
 
   .section {
@@ -53,6 +52,10 @@
 
   .want-to-be-notified-text {
     margin-bottom: 16px;
+  }
+
+  .button-container {
+    font-weight: bold;
   }
 
   h1 {
@@ -91,13 +94,17 @@
   }
 
   @media screen and (max-width: 640px) {
+    .wrapper {
+      scroll-snap-type: y mandatory;
+    }
+
     .content-wrapper {
       margin: 0 var(--horizontal-margin);
     }
 
     .section {
       width: 100%;
-      height: var(--app-height);
+      height: var(--app-height, 100vh);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -118,10 +125,7 @@
 
     h5 {
       font-size: 3rem;
-    }
-
-    #section-2 > div {
-      font-size: 1.5rem;
+      margin-top: 0;
     }
 
     .mobile-icon {
@@ -130,13 +134,13 @@
 
     @keyframes slide {
       0% {
-        bottom: 5%;
+        bottom: 10%;
       }
       50% {
-        bottom: 2.5%;
+        bottom: 7.5%;
       }
       100% {
-        bottom: 5%;
+        bottom: 10%;
       }
     }
   }
@@ -170,12 +174,11 @@
   /* Footer CSS starts */
   footer {
     width: 100vw;
-    min-height: 25vh;
+    min-height: calc(0.25 * var(--app-height));
     background-color: #f1f1f1;
     padding: 1rem var(--horizontal-margin);
     display: flex;
-    align-items: start;
-    scroll-snap-align: center;
+    align-items: center;
   }
 
   :global(body.dark) footer {
@@ -195,21 +198,20 @@
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 640px) {
     footer {
-      height: var(--app-height);
+      height: calc(1.5 * var(--app-height));
       padding-left: 0px;
       padding-right: 0px;
+      padding-top: 0;
+      padding-bottom: 0;
       justify-content: center;
       align-items: center;
+      scroll-snap-align: center;
     }
 
     .limiter {
       flex-direction: column;
-    }
-
-    .limiter > * {
-      margin-top: 1rem;
     }
   }
   /* Footer CSS ends */

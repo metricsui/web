@@ -22,6 +22,7 @@
 
   h6 {
     margin-bottom: 1rem;
+    margin-top: 0;
   }
 
   @media screen and (max-width: 600px) {
