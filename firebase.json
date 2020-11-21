@@ -1,0 +1,30 @@
+{
+  "hosting": [
+    {
+      "target": "production",
+      "public": "public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "appAssociation": "AUTO",
+      "rewrites": [
+        { "source": "/go/**", "dynamicLinks": true },
+        {
+          "source": "!/go/**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "staging",
+      "public": "public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "appAssociation": "AUTO",
+      "rewrites": [
+        { "source": "/go/**", "dynamicLinks": true },
+        {
+          "source": "!/go/**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

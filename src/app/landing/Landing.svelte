@@ -4,7 +4,7 @@
   import MetricsLogo from './components/MetricsLogo.svelte'
   import PartnersInImpact from './components/footer/PartnersInImpact.svelte'
   import EngageWithUs from './components/footer/EngageWithUs.svelte'
-  import { externalLinks } from '../constants/externalLinks'
+  import { externalLinks } from '../externalLinks'
   import { scrollSubscriptionHandler } from './state/scroll'
   import { onMount } from 'svelte'
 

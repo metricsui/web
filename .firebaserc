@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "web": "metrics-csui",
+    "default": "metrics-csui",
+    "metrics": "metrics-csui"
+  },
+  "targets": {
+    "metrics-csui": {
+      "hosting": {
+        "production": [
+          "metrics-csui"
+        ],
+        "staging": [
+          "dev-metrics-csui"
+        ],
+        "go": [
+          "go-metrics"
+        ]
+      }
+    }
+  }
+}

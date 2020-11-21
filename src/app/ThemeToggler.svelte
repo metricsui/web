@@ -21,17 +21,11 @@
 </script>
 
 <style>
-  .container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-  }
   .theme-switcher-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 5%;
-    margin-top: 1rem;
   }
   .icon {
     width: 16px;
@@ -86,21 +80,19 @@
   }
 </style>
 
-<div class="container">
-  <div class="theme-switcher-container">
-    <div class="icon">
-      <FaRegSun />
-    </div>
-    <label>
-      <input
-        type="checkbox"
-        on:change={toggleTheme}
-        value={!isDarkTheme ? 'on' : 'off'}
-        checked={isDarkTheme} />
-      <span />
-    </label>
-    <div class="icon">
-      <FaRegMoon />
-    </div>
+<div class="theme-switcher-container">
+  <div class="icon">
+    <FaRegSun />
+  </div>
+  <label>
+    <input
+      type="checkbox"
+      on:change={toggleTheme}
+      value={!isDarkTheme ? 'on' : 'off'}
+      checked={isDarkTheme} />
+    <span />
+  </label>
+  <div class="icon">
+    <FaRegMoon />
   </div>
 </div>

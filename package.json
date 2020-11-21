@@ -34,7 +34,9 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "sirv-cli": "^1.0.0",
     "svelte-fa": "^2.1.1",
-    "svelte-icons": "^2.1.0"
+    "svelte-icons": "^2.1.0",
+    "svelte-loading-spinners": "^0.1.1",
+    "svelte-spa-router": "^3.0.5"
   },
   "husky": {
     "hooks": {
