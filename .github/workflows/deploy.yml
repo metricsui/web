@@ -30,6 +30,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run build
-      - run: npx firebase use $FIREBASE_PROJECT_NAME
+      - run: npx firebase use default
       - name: Deploy to Firebase
         run: npm run deploy_dev

@@ -1,8 +1,6 @@
 {
   "projects": {
-    "web": "metrics-csui",
-    "default": "metrics-csui",
-    "metrics": "metrics-csui"
+    "default": "metrics-csui"
   },
   "targets": {
     "metrics-csui": {
@@ -12,9 +10,6 @@
         ],
         "staging": [
           "dev-metrics-csui"
-        ],
-        "go": [
-          "go-metrics"
         ]
       }
     }
