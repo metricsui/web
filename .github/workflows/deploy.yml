@@ -21,12 +21,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
-	with:
-		node-version: ${{ matrix.node-version }}
+  with:
+    node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run build
       - name: Deploy to Firebase
         run: npm run deploy_dev
-	env:
-		CI: true
-		FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  env:
+    CI: true
+    FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
