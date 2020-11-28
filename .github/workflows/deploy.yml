@@ -19,7 +19,6 @@ jobs:
     env:
       CI: true
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      FIREBASE_PROJECT_NAME: ${{ secrets.FIREBASE_PROJECT_NAME }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
