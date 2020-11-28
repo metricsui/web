@@ -19,6 +19,10 @@ export function handleLogout() {
   location.href = `https://akun-kp.cs.ui.ac.id/cas/logout?service=${DOMAIN}`
 }
 
+export function hasCachedColorScheme() {
+  return window.localStorage.getItem('isDarkTheme') != null
+}
+
 /**
  * Check if user uses dark mode color scheme
  */
@@ -34,4 +38,31 @@ export function shouldUseDarkModeColorScheme() {
   }
 
   return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
+/**
+ * Listen to prefered color scheme event and pass dark mode flag to callback.
+ * Returns subscriber object.
+ * @param {function} listener will receive dark mode flag
+ */
+export function addColorSchemeEventListener(callback) {
+  if (hasCachedColorScheme()) {
+    return {
+      remove: () => {},
+    }
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)')
+  const callbackWrapper = (event) => {
+    if (hasCachedColorScheme()) return
+    const isDarkMode = event.matches
+    callback(isDarkMode)
+  }
+
+  media.addEventListener('change', callbackWrapper, false)
+  return {
+    remove: () => {
+      media.removeEventListener('change', callbackWrapper, false)
+    },
+  }
 }
