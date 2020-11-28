@@ -36,3 +36,4 @@ jobs:
       - run: npx firebase use default
       - name: Deploy to Firebase
         run: npm run deploy_prod
+        
