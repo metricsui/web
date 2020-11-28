@@ -4,10 +4,7 @@ name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    tags:
-    - '*'
+on: push
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,7 +26,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy to Firebase
-        run: npm run deploy_prod
+        run: npm run deploy_dev
 	env:
 		CI: true
 		FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
