@@ -7,8 +7,7 @@
   let isDarkTheme = false
   onMount(async () => {
     if (shouldUseDarkModeColorScheme()) {
-      isDarkTheme = !isDarkTheme
-      window.document.body.classList.toggle('dark')
+      changeColorScheme(!isDarkTheme)
     }
     setTimeout(() => {
       window.document.body.classList.toggle('color-transition')
@@ -16,8 +15,12 @@
   })
 
   function toggleTheme() {
-    isDarkTheme = !isDarkTheme
-    window.localStorage.setItem('isDarkTheme', isDarkTheme)
+    window.localStorage.setItem('isDarkTheme', !isDarkTheme)
+    changeColorScheme(!isDarkTheme)
+  }
+
+  function changeColorScheme(value) {
+    isDarkTheme = value
     window.document.body.classList.toggle('dark')
   }
 </script>
