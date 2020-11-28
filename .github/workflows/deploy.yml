@@ -25,6 +25,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run build
+      - run: npx firebase use $FIREBASE_PROJECT_NAME
+        env:
+          FIREBASE_PROJECT_NAME: ${{ secrets.FIREBASE_PROJECT_NAME }}
       - name: Deploy to Firebase
         run: npm run deploy_dev
         env:
