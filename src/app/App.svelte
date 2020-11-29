@@ -187,6 +187,10 @@
     font-weight: 400;
   }
 
+  :global(.font-medium) {
+    font-weight: 500;
+  }
+
   :global(.font-bold) {
     font-weight: 700;
   }
@@ -211,13 +215,32 @@
     border-radius: 108px;
   }
 
+  :global(.primary-button2) {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+    border: none;
+    border-radius: 6px;
+    font-size: var(--body-size);
+    width: min(124px, 50vw);
+    min-height: 46px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   :global(button:focus),
-  :global(.primary-button:focus) {
+  :global(.primary-button:focus) :global(.primary-button2:focus) {
     outline: none;
   }
 
   :global(button:hover),
-  :global(.primary-button:hover) {
+  :global(.primary-button:hover),
+  :global(.primary-button2:hover) {
     cursor: pointer;
   }
 
