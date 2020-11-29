@@ -1,5 +1,7 @@
+import { ERROR_CODE } from './constants'
 import { DOMAIN } from './stores'
 import { jwtToken } from './stores'
+
 export function syncCurrentUrlWithParams(params) {
   const search = params.toString()
   const base = `${location.pathname}`
@@ -17,6 +19,10 @@ export function handleLogout() {
   jwtToken.set(null)
   localStorage.removeItem('token')
   location.href = `https://akun-kp.cs.ui.ac.id/cas/logout?service=${DOMAIN}`
+}
+
+export function isReauthenticateNeeded(apiStatus) {
+  return apiStatus.errorCode === ERROR_CODE.UN_AUTH
 }
 
 export function hasCachedColorScheme() {
