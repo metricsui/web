@@ -1,6 +1,7 @@
 <script>
   import { user, dashboard } from '../../stores'
   import { derived } from 'svelte/store'
+  import Steps from './Steps.svelte'
 
   const rtf = new Intl.RelativeTimeFormat(document.documentElement.lang)
 
@@ -137,9 +138,7 @@
   {#if shouldShowSteps}
     <div class="section-steps">
       <h5>How would your journey be in becoming our first ever mentee?</h5>
-      {#each $dashboard.steps as step}
-        <li>{step.type}</li>
-      {/each}
+      <Steps steps={$dashboard.steps} />
     </div>
   {/if}
 </div>

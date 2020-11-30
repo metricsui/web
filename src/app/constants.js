@@ -3,3 +3,10 @@ export const ERROR_CODE = {
   NOT_FOUND: 400,
   SERVER_ERROR: 500,
 }
+
+export const STEP_STATUS = {
+  notStarted: 'notStarted',
+  inProgress: 'inProgress',
+  completed: 'completed',
+  overdue: 'overdue',
+}
