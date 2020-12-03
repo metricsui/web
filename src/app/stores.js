@@ -6,12 +6,12 @@ export const roomName = writable(null)
 export const jwtToken = writable(null)
 
 export const apiStatus = writable({
-  loaded: true,
+  loaded: false,
   loading: false,
   errorCode: null,
 })
 
-export const user = writable()
+export const user = writable(null)
 
 export const dashboard = writable(null)
 
