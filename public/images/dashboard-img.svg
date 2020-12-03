@@ -1,0 +1,6 @@
+<svg width="338" height="338" viewBox="0 0 338 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M338 169H169V338C262.336 338 338 262.336 338 169Z" fill="#D8315B"/>
+<rect x="169" width="169" height="169" rx="80" fill="#B22953"/>
+<rect width="169" height="169" transform="matrix(-1 0 0 1 169 0)" fill="#E46589"/>
+<path d="M0 338H169V169C75.6639 169 0 244.664 0 338Z" fill="#F3BBCC"/>
+</svg>

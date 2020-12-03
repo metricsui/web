@@ -4,10 +4,17 @@ export const DOMAIN = window.location.origin
 
 export const roomName = writable(null)
 export const jwtToken = writable(null)
-export const loaded = writable(false)
 
-export const user = derived(jwtToken, ($jwtToken) => {
-  if (!$jwtToken) return null
-  const payload = $jwtToken.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')
-  return JSON.parse(window.atob(payload))
+export const apiStatus = writable({
+  loaded: true,
+  loading: false,
+  errorCode: null,
+})
+
+export const user = writable()
+
+export const dashboard = writable(null)
+
+export const isLoggedIn = derived(jwtToken, ($jwtToken) => {
+  return Boolean($jwtToken)
 })

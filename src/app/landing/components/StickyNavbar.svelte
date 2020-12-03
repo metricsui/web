@@ -1,7 +1,7 @@
 <script>
   import ThemeToggler from '../../ThemeToggler.svelte'
   import { handleLogin, handleLogout } from '../../utils'
-  import { user } from '../../stores'
+  import { isLoggedIn } from '../../stores'
 </script>
 
 <style>
@@ -32,7 +32,7 @@
 </style>
 
 <div class="container" id="sticky-navbar">
-  {#if !$user}
+  {#if !$isLoggedIn}
     <button on:click={handleLogin}>Login with SSO UI</button>
   {:else}<button on:click={handleLogout}>Logout</button>{/if}
   <ThemeToggler />
