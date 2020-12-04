@@ -6,7 +6,7 @@ export const roomName = writable(null)
 export const jwtToken = writable(null)
 
 export const apiStatus = writable({
-  loaded: true,
+  loaded: false,
   loading: false,
   errorCode: null,
 })
