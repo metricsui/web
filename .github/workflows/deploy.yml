@@ -19,6 +19,7 @@ jobs:
     env:
       CI: true
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      APPLICATION_TYPEFORM_SECRET_KEY: ${{ secrets.APPLICATION_TYPEFORM_SECRET_KEY }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
