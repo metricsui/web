@@ -13,8 +13,9 @@ export function syncCurrentUrlWithParams(params) {
   window.history.replaceState(null, null, replacement)
 }
 
-function showAlert() {
+function showAlert({ action }) {
   // TODO: show sweet alert with single action button
+  action()
 }
 
 export async function authGuard() {
