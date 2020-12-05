@@ -1,6 +1,10 @@
 <script>
   import Router, { replace } from 'svelte-spa-router'
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
+  import {
+    addColorSchemeEventListener,
+    shouldUseDarkModeColorScheme,
+  } from './utils'
   import { postAuthTicket } from './api'
   import { jwtToken } from './stores'
   import { syncCurrentUrlWithParams } from './utils'
@@ -11,6 +15,8 @@
   import { getNotificationsContext } from 'svelte-notifications'
 
   const { addNotification } = getNotificationsContext()
+
+  let unsubscriberColorScheme = null
 
   $: params = new URLSearchParams(location.search)
   $: if ('token' in localStorage) jwtToken.set(localStorage.token || '')
@@ -45,7 +51,27 @@
       }
       removeTicket()
     }
+
+    if (shouldUseDarkModeColorScheme()) {
+      changeColorScheme()
+    }
+
+    setTimeout(() => {
+      window.document.body.classList.toggle('color-transition')
+    }, 500)
+
+    unsubscriberColorScheme = addColorSchemeEventListener(changeColorScheme)
   })
+
+  onDestroy(() => {
+    if (unsubscriberColorScheme != null) {
+      unsubscriberColorScheme()
+    }
+  })
+
+  function changeColorScheme() {
+    window.document.body.classList.toggle('dark')
+  }
 
   const routes = {
     '/dashboard': Dashboard,

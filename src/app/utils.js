@@ -85,9 +85,7 @@ export function shouldUseDarkModeColorScheme() {
  */
 export function addColorSchemeEventListener(callback) {
   if (hasCachedColorScheme()) {
-    return {
-      remove: () => {},
-    }
+    return () => {}
   }
 
   const media = window.matchMedia('(prefers-color-scheme: dark)')
@@ -98,10 +96,8 @@ export function addColorSchemeEventListener(callback) {
   }
 
   media.addEventListener('change', callbackWrapper, false)
-  return {
-    remove: () => {
-      media.removeEventListener('change', callbackWrapper, false)
-    },
+  return () => {
+    media.removeEventListener('change', callbackWrapper, false)
   }
 }
 

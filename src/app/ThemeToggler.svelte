@@ -1,31 +1,9 @@
 <script>
   import FaRegSun from 'svelte-icons/fa/FaRegSun.svelte'
   import FaRegMoon from 'svelte-icons/fa/FaRegMoon.svelte'
-  import { onMount, onDestroy } from 'svelte'
-  import {
-    addColorSchemeEventListener,
-    shouldUseDarkModeColorScheme,
-  } from './utils'
+  import { shouldUseDarkModeColorScheme } from './utils'
 
-  let isDarkTheme = false
-  let colorSchemeSubscriber = null
-
-  onMount(async () => {
-    if (shouldUseDarkModeColorScheme()) {
-      changeColorScheme(!isDarkTheme)
-    }
-    setTimeout(() => {
-      window.document.body.classList.toggle('color-transition')
-    }, 500)
-
-    colorSchemeSubscriber = addColorSchemeEventListener(changeColorScheme)
-  })
-
-  onDestroy(() => {
-    if (colorSchemeSubscriber != null) {
-      colorSchemeSubscriber.remove()
-    }
-  })
+  let isDarkTheme = shouldUseDarkModeColorScheme()
 
   function toggleTheme() {
     window.localStorage.setItem('isDarkTheme', !isDarkTheme)
