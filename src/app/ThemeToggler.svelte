@@ -43,7 +43,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 5%;
   }
   .icon {
     width: 16px;

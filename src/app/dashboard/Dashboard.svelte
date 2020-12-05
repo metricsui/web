@@ -1,8 +1,7 @@
 <script>
   import { onDestroy, onMount } from 'svelte'
-  import { fade } from 'svelte/transition'
-  import MetricsLogo from '../landing/components/MetricsLogo.svelte'
-  import StickyNavbar from '../landing/components/StickyNavbar.svelte'
+  import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
+  import StickyNavbar from '../components/StickyNavbar.svelte'
   import { isLoggedIn, apiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
@@ -47,35 +46,6 @@
     justify-content: center;
   }
 
-  .loading {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .loading .content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .loading .content .bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--bg-color);
-    opacity: 0.7;
-  }
-
   .dashboard-content {
     width: 960px;
   }
@@ -103,12 +73,7 @@
   <StickyNavbar />
   <div class="container">
     {#if showLoading}
-      <div class="loading" transition:fade={{ delay: 250, duration: 300 }}>
-        <div class="content">
-          <div class="bg" />
-          <MetricsLogo />
-        </div>
-      </div>
+      <FullScreenLoadingIndicator />
     {/if}
     {#if $apiStatus.loaded}
       <div class="dashboard-content">

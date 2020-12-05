@@ -1,4 +1,4 @@
-import { derived, writable } from 'svelte/store'
+import { derived, readable, writable } from 'svelte/store'
 
 export const DOMAIN = window.location.origin
 
@@ -40,4 +40,19 @@ export const dashboard = writable(null)
 
 export const isLoggedIn = derived(jwtToken, ($jwtToken) => {
   return Boolean($jwtToken)
+})
+
+export const isMobileScreen = readable(true, (set) => {
+  const queryResult = window.matchMedia('only screen and (max-width: 768px)')
+  set(queryResult.matches)
+
+  const onQueryChange = (event) => {
+    set(event.target?.matches)
+  }
+
+  queryResult.addEventListener('change', onQueryChange)
+
+  return () => {
+    queryResult.removeEventListener('change', onQueryChange)
+  }
 })
