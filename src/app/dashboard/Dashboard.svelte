@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte'
   import { fade } from 'svelte/transition'
   import MetricsLogo from '../components/MetricsLogo.svelte'
-  import StickyNavbar from '../landing/components/StickyNavbar.svelte'
+  import StickyNavbar from '../components/StickyNavbar.svelte'
   import { isLoggedIn, apiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
