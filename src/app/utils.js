@@ -101,7 +101,7 @@ export function addColorSchemeEventListener(callback) {
 }
 
 /**
- * @see source {@link https://github.com/jashkenas/underscore/blob/d9741b32f29ddc24ac94f9ee8d073599948945e3/modules/debounce.js|Copyright}
+ * @see source {@link https://github.com/jashkenas/underscore|Copyright}
  * @param {Function} func
  * @param {number} wait
  * @param {boolean} immediate
