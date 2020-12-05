@@ -9,7 +9,11 @@
     shouldShowNavbarLogo,
   } from './state/scroll'
   import { onMount } from 'svelte'
+<<<<<<< HEAD
   import HowItAllStartedSection from './components/how-it-all-started/HowItAllStartedSection.svelte'
+=======
+  import HowDoISignUp from './components/HowDoISignUp.svelte'
+>>>>>>> add landing section 5
 
   function scrollTo(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' })
@@ -273,10 +277,17 @@
   </div>
 
   <HowItAllStartedSection />
+
+  <div class="section" id="section-5">
+    <HowDoISignUp />
+    <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-6')}>
+      <FaAngleDown />
+    </div>
+  </div>
   <!-- Content Ends-->
 
   <footer class="color-transition">
-    <div class="limiter" id="section-4">
+    <div class="limiter" id="section-7">
       <PartnersInImpact />
       <EngageWithUs />
     </div>
