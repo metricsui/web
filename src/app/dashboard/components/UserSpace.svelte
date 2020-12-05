@@ -72,6 +72,10 @@
   .button-disabled {
     filter: opacity(50%);
   }
+
+  #ActionButton {
+    width: min(100px, 50vw);
+  }
 </style>
 
 <div class="container">
@@ -96,16 +100,30 @@
     {#if shouldShowAction}
       <div class="section-action">
         {#if !$dashboard.action.overdue}
-          <a class="primary-button2" href={$dashboard.action.url}>
+          <a
+            id="ActionButton"
+            class="primary-button2"
+            href={$dashboard.action.url}>
+            <img
+              class="l-icon"
+              src="images/ic_action_nav.svg"
+              alt={`Navigtate to ${$dashboard.action.name}`} />
             {$dashboard.action.name}
           </a>
         {:else}
-          <div class="primary-button2 button-disabled">
+          <button
+            id="ActionButton"
+            class="primary-button2 button-disabled"
+            disabled={true}>
+            <img
+              class="l-icon"
+              src="images/ic_action_nav.svg"
+              alt={`Navigtate to ${$dashboard.action.name}`} />
             {$dashboard.action.name}
-          </div>
+          </button>
         {/if}
         <div class="deadline-text">
-          <img src="images/ic_access_time.svg" alt="deadline" />
+          <img src="images/ic_access_time.svg" alt="Deadline" />
           <span class="font-medium">
             {(() => {
               const deadlineDate = $dashboard.action.deadline

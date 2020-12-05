@@ -221,7 +221,7 @@
     border: none;
     border-radius: 6px;
     font-size: var(--body-size);
-    width: min(124px, 50vw);
+    padding: 0 1.125rem;
     min-height: 46px;
     font-weight: 500;
     text-align: center;
@@ -242,6 +242,10 @@
   :global(.primary-button:hover),
   :global(.primary-button2:hover) {
     cursor: pointer;
+  }
+
+  :global(.primary-button2 .l-icon) {
+    margin-right: 0.5rem;
   }
 
   /* TODO(adalberht): Refactor main to different component */
