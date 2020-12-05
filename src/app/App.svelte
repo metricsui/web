@@ -8,6 +8,9 @@
   import Dashboard from './dashboard/Dashboard.svelte'
   import Apply from './apply/Apply.svelte'
   import FullScreenLoadingIndicator from './components/FullScreenLoadingIndicator.svelte'
+  import { getNotificationsContext } from 'svelte-notifications'
+
+  const { addNotification } = getNotificationsContext()
 
   $: params = new URLSearchParams(location.search)
   $: if ('token' in localStorage) jwtToken.set(localStorage.token || '')
@@ -23,15 +26,24 @@
       isSigningIn = true
       const ticket = params.get('ticket')
       try {
-        const { data } = await postAuthTicket(ticket)
-        localStorage.token = data
+        const { data, status } = await postAuthTicket(ticket)
+        if (data != null) {
+          localStorage.token = data
+          replace('/dashboard')
+        } else {
+          addNotification({
+            text: `Login failed (${status})`,
+            position: 'bottom-right',
+            type: 'danger',
+            removeAfter: 5000,
+          })
+        }
       } catch (error) {
         console.log(error)
       } finally {
         isSigningIn = false
       }
-      await replace('/dashboard')
-      await removeTicket()
+      removeTicket()
     }
   })
 
