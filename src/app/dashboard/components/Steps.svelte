@@ -5,13 +5,11 @@
 </script>
 
 <style>
-  .wrapper {
-  }
-
   .steps-container {
     position: relative;
     list-style: none;
     padding-inline-start: 2.5rem;
+    overflow-y: hidden;
   }
   .steps-container::before {
     display: inline-block;
@@ -31,13 +29,13 @@
     line-height: 1.7rem;
   }
   .step-item:not(:last-child) {
-    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
   }
   .step-item::before {
     content: '';
     display: inline-block;
     position: absolute;
-    top: 0;
+    top: 1px;
     left: -2.5rem;
     width: 1.25rem;
     height: 1.25rem;
@@ -66,15 +64,12 @@
   }
 </style>
 
-<div class="wrapper">
-  <ul class="steps-container">
-    {#each steps as step}
-      <li class={`font-normal step-item step-${step.status}`}>
-        <strong
-          class="font-medium primary-color">{step.description.split(' ')[0]}
-        </strong>
-        {step.description.split(' ').slice(1).join(' ')}
-      </li>
-    {/each}
-  </ul>
-</div>
+<ul class="steps-container">
+  {#each steps as step}
+    <li class={`font-normal step-item step-${step.status}`}>
+      <strong class="font-medium primary-color">{step.description.split(' ')[0]}
+      </strong>
+      {step.description.split(' ').slice(1).join(' ')}
+    </li>
+  {/each}
+</ul>
