@@ -1,10 +1,13 @@
 <script>
-  import { user, dashboard } from '../../stores'
+  import { dashboard } from '../../stores'
   import { derived } from 'svelte/store'
   import Steps from './Steps.svelte'
 
   const rtf = new Intl.RelativeTimeFormat(document.documentElement.lang)
 
+  const user = derived(dashboard, ($dashboard) => {
+    return $dashboard?.user
+  })
   const shouldShowPath = derived(dashboard, ($dashboard) => {
     return Boolean($dashboard?.path)
   })

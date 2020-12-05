@@ -1,26 +1,46 @@
 import { getDashboard } from '../api'
 import { dashboard, apiStatus } from '../stores'
+import { isReauthenticateNeeded } from '../utils'
 
 export async function loadDashboard() {
-  await apiStatus.set({
+  await apiStatus.update((val) => ({
+    ...val,
     loading: true,
-  })
+  }))
 
-  const { data, status } = await getDashboard()
+  try {
+    const { data, status } = await getDashboard()
 
-  if (status >= 300) {
+    // need to reauthenticate
+    if (isReauthenticateNeeded(status)) {
+      apiStatus.update((val) => ({
+        ...val,
+        errorCode: status,
+        loading: true,
+      }))
+      return
+    }
+
+    if (status >= 300 || data == null) {
+      apiStatus.update((val) => ({
+        ...val,
+        errorCode: status ?? 500,
+        loading: false,
+      }))
+      return
+    }
+
+    dashboard.set(data)
     apiStatus.set({
-      errorCode: status,
       loading: false,
+      errorCode: null,
+      loaded: true,
     })
-    // TODO add notif
-    return
+  } catch (e) {
+    apiStatus.update((val) => ({
+      ...val,
+      errorCode: 500,
+      loading: false,
+    }))
   }
-
-  dashboard.set(data)
-  apiStatus.set({
-    loading: false,
-    errorCode: null,
-    loaded: true,
-  })
 }

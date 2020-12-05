@@ -13,9 +13,10 @@ function send({ method, path, data, token }) {
   if (token) {
     opts.headers['Authorization'] = `Bearer ${token}`
   }
-  console.log(`${base}/${path}`)
   return fetch(`${base}/${path}`, opts)
-    .then((r) => r.text())
+    .then((r) => {
+      return r.text()
+    })
     .then((json) => {
       try {
         return JSON.parse(json)

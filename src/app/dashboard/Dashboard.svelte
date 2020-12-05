@@ -5,22 +5,40 @@
   import { isLoggedIn, apiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
+  import { loadDashboard } from './actions'
+  import { getNotificationsContext } from 'svelte-notifications'
 
   let unsubscribeApiStatus = null
-  let showLoading = false
+
+  const { addNotification } = getNotificationsContext()
 
   onMount(() => {
     if (!$isLoggedIn) {
       handleLogin()
+      return
     }
 
     unsubscribeApiStatus = apiStatus.subscribe((currentApiStatus) => {
       if (isReauthenticateNeeded(currentApiStatus)) {
-        handleLogin()
+        addNotification({
+          text: 'Redirect to login',
+          position: 'bottom-right',
+          type: 'warning',
+        })
+        setTimeout(handleLogin, 1000)
         return
       }
-      showLoading = $apiStatus.loading || !$apiStatus.loaded
+
+      if ($apiStatus.loaded && currentApiStatus.errorCode != null) {
+        addNotification({
+          text: `Something wrong (${currentApiStatus.errorCode})`,
+          position: 'bottom-right',
+          type: 'danger',
+          removeAfter: 5000,
+        })
+      }
     })
+    loadDashboard()
   })
 
   onDestroy(() => {
@@ -72,10 +90,11 @@
 <div class="wrapper">
   <StickyNavbar />
   <div class="container">
-    {#if showLoading}
+    {#if $apiStatus.loading}
       <FullScreenLoadingIndicator />
-    {/if}
-    {#if $apiStatus.loaded}
+    {:else if !$apiStatus.loaded && $apiStatus.errorCode != null}
+      <div>Something wrong :(</div>
+    {:else if $apiStatus.loaded}
       <div class="dashboard-content">
         <UserSpace />
       </div>
