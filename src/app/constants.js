@@ -1,5 +1,6 @@
 export const ERROR_CODE = {
   UN_AUTH: 401,
+  UN_AUTHORIZED: 403,
   NOT_FOUND: 400,
   SERVER_ERROR: 500,
 }

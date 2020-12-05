@@ -2,25 +2,44 @@
   import { onDestroy, onMount } from 'svelte'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
   import StickyNavbar from '../components/StickyNavbar.svelte'
-  import { isLoggedIn, apiStatus } from '../stores'
+  import { isLoggedIn, dashboardApiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
+  import { loadDashboard } from './actions'
+  import { getNotificationsContext } from 'svelte-notifications'
 
   let unsubscribeApiStatus = null
-  let showLoading = false
+
+  const { addNotification } = getNotificationsContext()
 
   onMount(() => {
+    console.log('hahaha')
     if (!$isLoggedIn) {
       handleLogin()
+      return
     }
 
-    unsubscribeApiStatus = apiStatus.subscribe((currentApiStatus) => {
+    unsubscribeApiStatus = dashboardApiStatus.subscribe((currentApiStatus) => {
       if (isReauthenticateNeeded(currentApiStatus)) {
-        handleLogin()
+        addNotification({
+          text: 'Redirect to login',
+          position: 'bottom-right',
+          type: 'warning',
+        })
+        setTimeout(handleLogin, 1000)
         return
       }
-      showLoading = $apiStatus.loading || !$apiStatus.loaded
+
+      if (dashboardApiStatus.loaded && currentApiStatus.errorCode != null) {
+        addNotification({
+          text: `Something wrong (${currentApiStatus.errorCode})`,
+          position: 'bottom-right',
+          type: 'danger',
+          removeAfter: 5000,
+        })
+      }
     })
+    loadDashboard()
   })
 
   onDestroy(() => {
@@ -72,10 +91,11 @@
 <div class="wrapper">
   <StickyNavbar />
   <div class="container">
-    {#if showLoading}
+    {#if $dashboardApiStatus.loading}
       <FullScreenLoadingIndicator />
-    {/if}
-    {#if $apiStatus.loaded}
+    {:else if !$dashboardApiStatus.loaded && $dashboardApiStatus.errorCode != null}
+      <div>Something went wrong 😱</div>
+    {:else if $dashboardApiStatus.loaded}
       <div class="dashboard-content">
         <UserSpace />
       </div>
