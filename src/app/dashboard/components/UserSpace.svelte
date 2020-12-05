@@ -44,6 +44,16 @@
     margin-top: 2.5rem;
   }
 
+  @media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .section-steps {
+      padding-right: 30%;
+    }
+  }
+
+  .section-steps h5 {
+    line-height: 2.25rem;
+  }
+
   .path-text {
     color: var(--cerise-color);
     font-size: var(--h5-size);
