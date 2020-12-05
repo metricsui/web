@@ -4,6 +4,8 @@
   import { handleLogin, handleLogout } from '../utils'
   import { isLoggedIn, isMobileScreen } from '../stores'
   import MetricsLogo from './MetricsLogo.svelte'
+  import IcClose from 'svelte-icons/fa/FaTimes.svelte'
+  import IcMenu from 'svelte-icons/fa/FaBars.svelte'
 
   export let showLogo = true
   export let useAnimation = false
@@ -84,11 +86,17 @@
   .space {
     flex-grow: 1;
   }
+
+  .icon-menu {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-color);
+  }
 </style>
 
 <div class="container" id="sticky-navbar">
   <div class={`drawer ${isShowingDrawer ? 'drawer-open' : ''}`}>
-    <div class="nav-content">
+    <div class="nav-content color-transition">
       {#if (isShowingDrawer || showLogo) && useAnimation}
         <div class="logo-wrapper" transition:fade>
           <MetricsLogo />
@@ -114,12 +122,12 @@
             on:click={handleLogout}>Logout</button>
         {/if}
       {:else if isShowingDrawer}
-        <div on:click={toggleDrawer}>
-          <img src="images/ic_close.svg" alt="Close menu" in:fade />
+        <div class="icon-menu" on:click={toggleDrawer} in:fade>
+          <IcClose />
         </div>
       {:else}
-        <div on:click={toggleDrawer}>
-          <img src="images/ic_hamburger_menu.svg" alt="Open menu" in:fade />
+        <div class="icon-menu" on:click={toggleDrawer} in:fade>
+          <IcMenu />
         </div>
       {/if}
     </div>
