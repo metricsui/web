@@ -11,7 +11,7 @@
     "lint:fix": "eslint --fix './**/*.{js,svelte}'",
     "pretest": "npm run lint",
     "deploy_dev": "npx firebase deploy --only hosting:staging",
-    "deploy_prod": "npx firebase deploy --only hosting:production --token $FIREBASE_TOKEN"
+    "deploy_prod": "npx firebase deploy --only hosting:production"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",

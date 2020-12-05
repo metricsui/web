@@ -153,7 +153,13 @@
   @media screen and (max-width: 640px) {
     :global(:root) {
       --h1-size: 4rem;
-      --horizontal-margin: 10%;
+      --horizontal-margin: 8%;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    :global(html, body) {
+      font-size: 12px;
     }
   }
 
@@ -241,12 +247,41 @@
     font-weight: 700;
   }
 
-  :global(button),
-  :global(.primary-button) {
+  :global(.row) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  :global(.column) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.flex-wrap) {
+    flex-wrap: wrap;
+  }
+
+  :global(.justify-content-center) {
+    justify-content: center;
+  }
+
+  :global(.justify-content-space-between) {
+    justify-content: space-between;
+  }
+
+  :global(.justify-content-start) {
+    justify-content: flex-start;
+  }
+
+  :global(.justify-content-end) {
+    justify-content: end;
+  }
+
+  :global(button) {
     background-color: var(--primary-color);
     color: var(--on-primary-color);
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: var(--body-size);
     width: min(160px, 50vw);
     min-height: 40px;
@@ -258,7 +293,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 108px;
   }
 
   :global(.primary-button2) {
@@ -298,14 +332,12 @@
   }
 
   :global(button:focus),
-  :global(.primary-button:focus),
   :global(.primary-button2:focus),
   :global(.secondary-button:focus) {
     outline: none;
   }
 
   :global(button:hover),
-  :global(.primary-button:hover),
   :global(.primary-button2:hover),
   :global(.secondary-button:hover) {
     cursor: pointer;

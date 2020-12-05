@@ -122,10 +122,12 @@
           <ThemeToggler />
         </div>
         {#if !$isLoggedIn}
-          <button class="secondary-button" on:click={handleLogin}>Login (SSO UI)</button>
+          <button
+            class="secondary-button color-transition"
+            on:click={handleLogin}>Login (SSO UI)</button>
         {:else}
           <button
-            class="secondary-button"
+            class="secondary-button color-transition"
             on:click={isLanding ? redirectToDashboard : handleLogout}>{isLanding ? 'Dashboard' : 'Logout'}</button>
         {/if}
       {:else if isShowingDrawer}
@@ -142,10 +144,12 @@
     {#if isShowingDrawer}
       <div class="drawer-content color-transition" transition:slide>
         {#if !$isLoggedIn}
-          <button class="secondary-button" on:click={handleLogin}>Login (SSO UI)</button>
+          <button
+            class="secondary-button color-transition"
+            on:click={handleLogin}>Login (SSO UI)</button>
         {:else}
           <button
-            class="secondary-button"
+            class="secondary-button color-transition"
             on:click={isLanding ? redirectToDashboard : handleLogout}>{isLanding ? 'Dashboard' : 'Logout'}</button>
         {/if}
         <div class="drawer-item-space" />

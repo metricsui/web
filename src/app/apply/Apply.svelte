@@ -25,12 +25,14 @@
     typeformUrl = `${typeformUrl}#${getHiddenFieldsParamsString()}`
     isLoading = false
   })
+
+  $: innerHeight = window.innerHeight
 </script>
 
 <style type="text/css">
-  html {
+  iframe html {
     margin: 0;
-    height: 100%;
+    height: var(--app-height);
     overflow: hidden;
   }
   iframe {
@@ -50,7 +52,7 @@
     title="Metrics Application Typeform"
     id="typeform-full"
     width="100%"
-    height="100%"
+    height={innerHeight}
     frameborder="0"
     allow="autoplay; encrypted-media;"
     src={typeformUrl} />

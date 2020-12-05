@@ -4,12 +4,12 @@
   import MetricsLogo from '../components/MetricsLogo.svelte'
   import PartnersInImpact from './components/footer/PartnersInImpact.svelte'
   import EngageWithUs from './components/footer/EngageWithUs.svelte'
-  import { externalLinks } from '../externalLinks'
   import {
     scrollSubscriptionHandler,
     shouldShowNavbarLogo,
   } from './state/scroll'
   import { onMount } from 'svelte'
+  import HowItAllStartedSection from './components/how-it-all-started/HowItAllStartedSection.svelte'
 
   function scrollTo(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' })
@@ -40,7 +40,7 @@
   }
 
   /* Content CSS starts */
-  .section > * {
+  .section .left-column {
     max-width: 800px;
   }
 
@@ -61,20 +61,26 @@
     font-weight: bold;
   }
 
-  h1 {
+  .left-column h1 {
     text-align: left;
     line-height: 114%;
     letter-spacing: -1.5px;
-    margin-top: 24px;
+    margin-top: 1.75rem;
+    margin-bottom: 0.6rem;
   }
 
-  h5 {
-    margin-bottom: 1rem;
+  .left-column h5 {
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .left-column .button-container {
+    margin-top: 2rem;
   }
 
   .body-text {
     font-size: 1.25rem;
-    margin-top: 0.5rem;
+    margin-bottom: 12px;
   }
 
   .arrow-icon {
@@ -88,30 +94,34 @@
     animation: slide 1s linear infinite;
   }
 
-  .desktop-arrow-icon {
-    display: none;
-  }
-
-  .mobile-icon {
-    display: none;
+  .content-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    /* scroll-snap-align: start; */
   }
 
   @media screen and (max-width: 640px) {
     .wrapper {
-      scroll-snap-type: y mandatory;
+      /* scroll-snap-type: y mandatory; */
     }
 
     .content-wrapper {
       margin: 0 var(--horizontal-margin);
     }
 
+    .body-text {
+      line-height: 1.5rem;
+    }
     .section {
       width: 100%;
       height: var(--app-height, 100vh);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       scroll-snap-align: start;
       position: relative;
       margin: 0;
@@ -124,11 +134,6 @@
     h6 {
       margin-top: 0;
       font-size: 3rem;
-    }
-
-    h5 {
-      font-size: 3rem;
-      margin-top: 0;
     }
 
     .mobile-icon {
@@ -149,14 +154,6 @@
   }
 
   @media screen and (min-width: 640px) {
-    .content-wrapper {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      scroll-snap-align: start;
-    }
     .desktop-arrow-icon {
       display: block;
     }
@@ -200,22 +197,43 @@
     margin-left: 0.5rem;
   }
 
+  .left-column {
+    margin-right: 1.5rem;
+  }
+
+  .eligible-applicants-text {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
   @media screen and (max-width: 1024px) {
     .limiter {
       width: calc(100% - var(--horizontal-margin) - var(--horizontal-margin));
+    }
+    #section-1 > img {
+      display: none;
+    }
+    .left-column {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .left-column h1 {
+      font-size: 2.5rem;
     }
   }
 
   @media screen and (max-width: 640px) {
     footer {
-      height: calc(1.5 * var(--app-height));
+      height: var(--app-height);
       padding-left: 0px;
       padding-right: 0px;
       padding-top: 0;
       padding-bottom: 0;
       justify-content: center;
       align-items: center;
-      scroll-snap-align: center;
+      /* scroll-snap-align: center; */
     }
 
     .limiter {
@@ -230,44 +248,31 @@
 
   <!-- Content Starts-->
   <div class="content-wrapper">
-  <div class="section" id="section-1">
-    <div class="logo-wrapper">
-      <MetricsLogo />
+    <div class="section row justify-content-space-between" id="section-1">
+      <div class="left-column">
+        <div class="logo-wrapper">
+          <MetricsLogo />
+        </div>
+        <h1 class="font-light">Start-up your tech career</h1>
+        <h5>Landing your tech internship has never been easier</h5>
+        <div class="body-text">
+          Join our 14-weeks intensive mentoring program with former tech interns from leading companies*
+        </div>
+        <div class="eligible-applicants-text">
+          *Applicants can only be from Computer Science UI for now
+        </div>
+        <div class="button-container">
+          <a href="#/dashboard" class="primary-button2" id="let-me-know-button">Start now</a>
+        </div>
+      </div>
+      <img src="images/landing_asset.svg" alt="illustration-1" />
     </div>
-    <h1 class="font-light">Coming soon to start-up your career</h1>
-    <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-2')}>
+    <div class="arrow-icon" on:click={() => scrollTo('section-2')}>
       <FaAngleDown />
     </div>
   </div>
 
-  <div class="section" id="section-2">
-    <h5>What is Metrics?</h5>
-    <div class="body-text">
-      Metrics is a mentoring initiative by Computer Science Alumni of Universitas Indonesia
-      that strives to help CS students start-up their careers through an extensive and collaborative
-      four-month mentorship program.
-    </div>
-    <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-3')}>
-      <FaAngleDown />
-    </div>
-  </div>
-
-  <div class="section" id="section-3">
-    <h6 class="want-to-be-notified-text">
-      Want to be notified when the magic happens?
-    </h6>
-    <div class="button-container">
-      <a href={externalLinks.earlyBirdFormURL} class="primary-button" id="let-me-know-button" target="_blank">LET ME
-        KNOW</a>
-    </div>
-    <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-4')}>
-      <FaAngleDown />
-    </div>
-  </div>
-  <div class="arrow-icon desktop-arrow-icon" on:click={() => scrollTo('section-4')}>
-    <FaAngleDown />
-  </div>
-  </div>
+  <HowItAllStartedSection />
   <!-- Content Ends-->
 
   <footer class="color-transition">
