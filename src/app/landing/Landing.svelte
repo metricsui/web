@@ -1,11 +1,11 @@
 <script>
   import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte'
-  import StickyNavbar from './components/StickyNavbar.svelte'
-  import MetricsLogo from './components/MetricsLogo.svelte'
+  import StickyNavbar from '../components/StickyNavbar.svelte'
+  import MetricsLogo from '../components/MetricsLogo.svelte'
   import PartnersInImpact from './components/footer/PartnersInImpact.svelte'
   import EngageWithUs from './components/footer/EngageWithUs.svelte'
   import { externalLinks } from '../externalLinks'
-  import { scrollSubscriptionHandler } from './state/scroll'
+  import { scrollSubscriptionHandler, lastScrollPosition } from './state/scroll'
   import { onMount } from 'svelte'
 
   function scrollTo(sectionId) {
@@ -192,6 +192,11 @@
     align-items: center;
   }
 
+  .logo-wrapper {
+    width: min(160px, 80vw);
+    margin-left: 0.5rem;
+  }
+
   @media screen and (max-width: 1024px) {
     .limiter {
       width: calc(100% - var(--horizontal-margin) - var(--horizontal-margin));
@@ -218,12 +223,14 @@
 </style>
 
 <div class="wrapper" id="landing-wrapper" on:scroll={scrollSubscriptionHandler}>
-  <StickyNavbar />
+  <StickyNavbar showLogo={lastScrollPosition > 200} useAnimation={true} />
 
   <!-- Content Starts-->
   <div class="content-wrapper">
   <div class="section" id="section-1">
-    <MetricsLogo />
+    <div class="logo-wrapper">
+      <MetricsLogo />
+    </div>
     <h1 class="font-light">Coming soon to start-up your career</h1>
     <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-2')}>
       <FaAngleDown />

@@ -1,7 +1,7 @@
 <script>
   import { onDestroy, onMount } from 'svelte'
   import { fade } from 'svelte/transition'
-  import MetricsLogo from '../landing/components/MetricsLogo.svelte'
+  import MetricsLogo from '../components/MetricsLogo.svelte'
   import StickyNavbar from '../landing/components/StickyNavbar.svelte'
   import { isLoggedIn, apiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
