@@ -2,11 +2,13 @@
   import { onDestroy, onMount } from 'svelte'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
   import StickyNavbar from '../components/StickyNavbar.svelte'
-  import { isLoggedIn, apiStatus } from '../stores'
+  import { isLoggedIn, apiStatus, user } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
   import { loadDashboard } from './actions'
   import { getNotificationsContext } from 'svelte-notifications'
+  import { ERROR_CODE } from '../constants'
+  import Unauthorized from './components/Unauthorized.svelte'
 
   let unsubscribeApiStatus = null
 
@@ -92,6 +94,10 @@
   <div class="container">
     {#if $apiStatus.loading}
       <FullScreenLoadingIndicator />
+    {:else if $apiStatus.errorPayload != null && $apiStatus.errorCode === ERROR_CODE.UN_AUTHORIZED}
+      <Unauthorized
+        username={$user.name}
+        faculty={$apiStatus.errorPayload.faculty} />
     {:else if !$apiStatus.loaded && $apiStatus.errorCode != null}
       <div>Something wrong :(</div>
     {:else if $apiStatus.loaded}

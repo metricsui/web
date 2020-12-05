@@ -25,6 +25,7 @@ export async function loadDashboard() {
       apiStatus.update((val) => ({
         ...val,
         errorCode: status ?? 500,
+        errorPayload: data,
         loading: false,
       }))
       return
@@ -34,6 +35,7 @@ export async function loadDashboard() {
     apiStatus.set({
       loading: false,
       errorCode: null,
+      errorPayload: null,
       loaded: true,
     })
   } catch (e) {

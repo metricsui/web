@@ -9,6 +9,7 @@ export const apiStatus = writable({
   loaded: false,
   loading: false,
   errorCode: null,
+  errorPayload: null,
 })
 
 function isJwtToken(token) {
