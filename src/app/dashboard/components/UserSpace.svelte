@@ -1,12 +1,12 @@
 <script>
-  import { dashboard } from '../../stores'
+  import { dashboard, user } from '../../stores'
   import { derived } from 'svelte/store'
   import Steps from './Steps.svelte'
 
   const rtf = new Intl.RelativeTimeFormat(document.documentElement.lang)
 
-  const user = derived(dashboard, ($dashboard) => {
-    return $dashboard?.user
+  const userData = derived([dashboard, user], ([$dashboard, $user]) => {
+    return $dashboard?.user || $user
   })
   const shouldShowPath = derived(dashboard, ($dashboard) => {
     return Boolean($dashboard?.path)
@@ -17,8 +17,18 @@
   const shouldShowSteps = derived(dashboard, ($dashboard) => {
     return $dashboard?.steps?.length > 0
   })
-  const isActionHasStep = $dashboard?.action?.step != null
-  const isPathHasAssignment = $dashboard?.path?.taskUrl != null
+  const isActionHasStep = derived(
+    dashboard,
+    ($dashboard) => $dashboard?.action?.step != null
+  )
+  const isActionHasTodo = derived(
+    dashboard,
+    ($dashboard) => $dashboard?.action?.url != null
+  )
+  const isPathHasAssignment = derived(
+    dashboard,
+    ($dashboard) => $dashboard?.path?.taskUrl != null
+  )
 </script>
 
 <style>
@@ -82,9 +92,6 @@
   .deadline-text img {
     margin-bottom: -0.25rem;
   }
-  .button-disabled {
-    filter: opacity(50%);
-  }
 
   #ActionButton {
     width: min(100px, 50vw);
@@ -92,25 +99,28 @@
 </style>
 
 <div class="container">
-  <div class="font-normal greeting-text">Welcome,<br />{$user.name}</div>
-  {#if shouldShowPath || shouldShowAction}
+  <div class="font-normal greeting-text">Welcome,<br />{$userData.name}</div>
+  {#if $shouldShowPath || $shouldShowAction}
     <div class="section-description">
-      {#if shouldShowPath}
+      {#if $shouldShowPath}
         <div class="font-medium path-text">{$dashboard.path.name}</div>
       {/if}
-      {#if isActionHasStep}
+      {#if $isActionHasStep}
         <div class="font-normal notice-text">
-          {$dashboard.action.step.description}
+          {$dashboard.action.description}
         </div>
       {/if}
-      {#if isPathHasAssignment}
-        <a class="font-bold assignment-text" href={$dashboard.path.taskUrl}>
+      {#if $isPathHasAssignment && $isActionHasTodo}
+        <a
+          class="font-medium assignment-text"
+          href={$dashboard.path.taskUrl}
+          target="_blank">
           View Assignment
         </a>
       {/if}
     </div>
 
-    {#if shouldShowAction}
+    {#if $shouldShowAction && $isActionHasTodo}
       <div class="section-action">
         {#if !$dashboard.action.overdue}
           <a
@@ -124,10 +134,7 @@
             {$dashboard.action.name}
           </a>
         {:else}
-          <button
-            id="ActionButton"
-            class="primary-button2 button-disabled"
-            disabled={true}>
+          <button id="ActionButton" class="primary-button2" disabled={true}>
             <img
               class="l-icon"
               src="images/ic_action_nav.svg"
@@ -139,10 +146,10 @@
           <img src="images/ic_access_time.svg" alt="Deadline" />
           <span class="font-medium">
             {(() => {
-              const deadlineDate = $dashboard.action.deadline
-              const diff = Date.now() - deadlineDate
+              if ($dashboard.action.overdue) return 'Submission is closed'
 
-              if (diff < 0) return 'Submission is closed'
+              const deadlineDate = $dashboard.action.deadline
+              const diff = deadlineDate - Date.now()
 
               const secs = Math.floor(diff / 1000)
               const mins = Math.floor(secs / 60)
@@ -166,7 +173,7 @@
     {/if}
   {/if}
 
-  {#if shouldShowSteps}
+  {#if $shouldShowSteps}
     <div class="section-steps">
       <h5>How would your journey be in becoming our first ever mentee?</h5>
       <Steps steps={$dashboard.steps} />
