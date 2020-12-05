@@ -1,16 +1,24 @@
 <script>
   import Router, { replace } from 'svelte-spa-router'
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
+  import {
+    addColorSchemeEventListener,
+    shouldUseDarkModeColorScheme,
+  } from './utils'
   import { postAuthTicket } from './api'
-  import { jwtToken } from './stores'
+  import { authApiStatus, jwtToken } from './stores'
   import { syncCurrentUrlWithParams } from './utils'
   import Landing from './landing/Landing.svelte'
   import Dashboard from './dashboard/Dashboard.svelte'
   import Apply from './apply/Apply.svelte'
   import FullScreenLoadingIndicator from './components/FullScreenLoadingIndicator.svelte'
   import { getNotificationsContext } from 'svelte-notifications'
+  import Error403 from './Error403/Error403.svelte'
+  import { ERROR_CODE } from './constants'
 
   const { addNotification } = getNotificationsContext()
+
+  let unsubscriberColorScheme = null
 
   $: params = new URLSearchParams(location.search)
   $: if ('token' in localStorage) jwtToken.set(localStorage.token || '')
@@ -27,10 +35,21 @@
       const ticket = params.get('ticket')
       try {
         const { data, status } = await postAuthTicket(ticket)
-        if (data != null) {
+
+        if (status === 200 && data != null) {
           localStorage.token = data
           replace('/dashboard')
         } else {
+          authApiStatus.set({
+            errorCode: status,
+            errorPayload: data,
+          })
+
+          if (status === ERROR_CODE.UN_AUTHORIZED && data != null) {
+            replace('/403')
+            return
+          }
+
           addNotification({
             text: `Login failed (${status})`,
             position: 'bottom-right',
@@ -45,9 +64,30 @@
       }
       removeTicket()
     }
+
+    if (shouldUseDarkModeColorScheme()) {
+      changeColorScheme()
+    }
+
+    setTimeout(() => {
+      window.document.body.classList.toggle('color-transition')
+    }, 500)
+
+    unsubscriberColorScheme = addColorSchemeEventListener(changeColorScheme)
   })
 
+  onDestroy(() => {
+    if (unsubscriberColorScheme != null) {
+      unsubscriberColorScheme()
+    }
+  })
+
+  function changeColorScheme() {
+    window.document.body.classList.toggle('dark')
+  }
+
   const routes = {
+    '/403': Error403,
     '/dashboard': Dashboard,
     '/apply': Apply,
     '/': Landing,
@@ -301,6 +341,10 @@
   :global(.primary-button2:hover),
   :global(.secondary-button:hover) {
     cursor: pointer;
+  }
+
+  :global(button:disabled) {
+    filter: opacity(50%);
   }
 
   :global(.primary-button2 .l-icon) {

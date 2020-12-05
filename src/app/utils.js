@@ -1,3 +1,4 @@
+import { replace } from 'svelte-spa-router'
 import { get } from 'svelte/store'
 
 import { ERROR_CODE } from './constants'
@@ -47,6 +48,11 @@ export function handleLogout() {
   location.href = `https://akun-kp.cs.ui.ac.id/cas/logout?service=${DOMAIN}`
 }
 
+// Single-page redirect without reload using SPA replace
+export function redirectTo(url) {
+  replace(url)
+}
+
 export function isReauthenticateNeeded(apiStatus) {
   return apiStatus.errorCode === ERROR_CODE.UN_AUTH
 }
@@ -79,9 +85,7 @@ export function shouldUseDarkModeColorScheme() {
  */
 export function addColorSchemeEventListener(callback) {
   if (hasCachedColorScheme()) {
-    return {
-      remove: () => {},
-    }
+    return () => {}
   }
 
   const media = window.matchMedia('(prefers-color-scheme: dark)')
@@ -92,10 +96,8 @@ export function addColorSchemeEventListener(callback) {
   }
 
   media.addEventListener('change', callbackWrapper, false)
-  return {
-    remove: () => {
-      media.removeEventListener('change', callbackWrapper, false)
-    },
+  return () => {
+    media.removeEventListener('change', callbackWrapper, false)
   }
 }
 

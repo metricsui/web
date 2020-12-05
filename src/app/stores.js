@@ -5,17 +5,16 @@ export const DOMAIN = window.location.origin
 export const roomName = writable(null)
 export const jwtToken = writable(null)
 
-export const apiStatus = writable({
-  loaded: false,
-  loading: false,
-  errorCode: null,
-})
-
 function isJwtToken(token) {
   if (!token) return null
   const split = token.split('.')
   return split.length === 3
 }
+
+export const authApiStatus = writable({
+  errorCode: null,
+  errorPayload: null,
+})
 
 export const user = derived(jwtToken, ($jwtToken) => {
   if (!isJwtToken($jwtToken)) return null
@@ -36,6 +35,12 @@ export const isTokenStillValid = derived(user, ($user) => {
   return Date.now() < $user.exp * 1000
 })
 
+export const dashboardApiStatus = writable({
+  loaded: false,
+  loading: false,
+  errorCode: null,
+  errorPayload: null,
+})
 export const dashboard = writable(null)
 
 export const isLoggedIn = derived(jwtToken, ($jwtToken) => {
