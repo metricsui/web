@@ -4,10 +4,10 @@
   import { postAuthTicket } from './api'
   import { jwtToken } from './stores'
   import { syncCurrentUrlWithParams } from './utils'
-  import { Jumper } from 'svelte-loading-spinners'
   import Landing from './landing/Landing.svelte'
   import Dashboard from './dashboard/Dashboard.svelte'
-  import Register from './register/Register.svelte'
+  import Apply from './apply/Apply.svelte'
+  import FullScreenLoadingIndicator from './components/FullScreenLoadingIndicator.svelte'
 
   $: params = new URLSearchParams(location.search)
   $: if ('token' in localStorage) jwtToken.set(localStorage.token || '')
@@ -18,16 +18,11 @@
     syncCurrentUrlWithParams(params)
   }
 
-  function timeout(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-  }
-
   onMount(async () => {
     if (params.has('ticket')) {
       isSigningIn = true
       const ticket = params.get('ticket')
       try {
-        await timeout(3000)
         const { data } = await postAuthTicket(ticket)
         localStorage.token = data
       } catch (error) {
@@ -36,14 +31,13 @@
         isSigningIn = false
       }
       await replace('/dashboard')
-      console.log('removing ticket...')
       await removeTicket()
     }
   })
 
   const routes = {
     '/dashboard': Dashboard,
-    '/register': Register,
+    '/apply': Apply,
     '/': Landing,
   }
 </script>
@@ -259,10 +253,6 @@
   {#if !isSigningIn}
     <Router {routes} />
   {:else}
-    <div
-      style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <Jumper size="60" color="#d8315b" unit="px" />
-      <span>Signing you in...</span>
-    </div>
+    <FullScreenLoadingIndicator loadingText="Signing you in..." />
   {/if}
 </main>
