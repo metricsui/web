@@ -12,7 +12,8 @@ export function syncCurrentUrlWithParams(params) {
 }
 
 export function handleLogin() {
-  location.href = `https://akun-kp.cs.ui.ac.id/cas/login?service=${DOMAIN}`
+  const currentHref = location.href
+  location.href = `https://akun-kp.cs.ui.ac.id/cas/login?service=${currentHref}`
 }
 
 export function handleLogout() {
