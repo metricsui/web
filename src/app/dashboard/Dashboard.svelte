@@ -45,7 +45,6 @@
     margin: 10rem 2rem;
     display: flex;
     justify-content: center;
-    overflow-x: hidden;
   }
 
   .loading {
@@ -79,7 +78,6 @@
 
   .dashboard-content {
     width: 960px;
-    height: 1000px;
   }
 
   .img-container {
