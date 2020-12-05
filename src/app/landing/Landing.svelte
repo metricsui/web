@@ -5,7 +5,10 @@
   import PartnersInImpact from './components/footer/PartnersInImpact.svelte'
   import EngageWithUs from './components/footer/EngageWithUs.svelte'
   import { externalLinks } from '../externalLinks'
-  import { scrollSubscriptionHandler, lastScrollPosition } from './state/scroll'
+  import {
+    scrollSubscriptionHandler,
+    shouldShowNavbarLogo,
+  } from './state/scroll'
   import { onMount } from 'svelte'
 
   function scrollTo(sectionId) {
@@ -223,7 +226,7 @@
 </style>
 
 <div class="wrapper" id="landing-wrapper" on:scroll={scrollSubscriptionHandler}>
-  <StickyNavbar showLogo={lastScrollPosition > 200} useAnimation={true} />
+  <StickyNavbar showLogo={$shouldShowNavbarLogo} useAnimation={true} />
 
   <!-- Content Starts-->
   <div class="content-wrapper">

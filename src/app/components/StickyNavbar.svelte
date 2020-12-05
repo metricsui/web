@@ -1,5 +1,5 @@
 <script>
-  import { slide } from 'svelte/transition'
+  import { fade } from 'svelte/transition'
   import ThemeToggler from '../ThemeToggler.svelte'
   import { handleLogin, handleLogout } from '../utils'
   import { isLoggedIn } from '../stores'
@@ -53,7 +53,7 @@
 
 <div class="container" id="sticky-navbar">
   {#if showLogo && useAnimation}
-    <div class="logo-wrapper" transition:slide>
+    <div class="logo-wrapper" out:fade>
       <MetricsLogo />
     </div>
   {/if}
