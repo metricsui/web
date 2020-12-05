@@ -100,16 +100,22 @@ export function addColorSchemeEventListener(callback) {
   }
 }
 
+/**
+ * @see source {@link https://github.com/jashkenas/underscore/blob/d9741b32f29ddc24ac94f9ee8d073599948945e3/modules/debounce.js|Copyright}
+ * @param {Function} func
+ * @param {number} wait
+ * @param {boolean} immediate
+ */
 export function debounce(func, wait, immediate) {
-  var timeout
+  let timeout
   return function () {
-    var context = this,
+    let context = this,
       args = arguments
-    var later = function () {
+    let later = function () {
       timeout = null
       if (!immediate) func.apply(context, args)
     }
-    var callNow = immediate && !timeout
+    let callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
     if (callNow) func.apply(context, args)
