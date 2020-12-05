@@ -38,8 +38,7 @@ export async function authGuard() {
 }
 
 export function handleLogin() {
-  const currentHref = location.href
-  location.href = `https://akun-kp.cs.ui.ac.id/cas/login?service=${currentHref}`
+  location.href = `https://akun-kp.cs.ui.ac.id/cas/login?service=${DOMAIN}`
 }
 
 export function handleLogout() {
