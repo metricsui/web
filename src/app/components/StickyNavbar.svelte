@@ -125,7 +125,7 @@
     </div>
 
     {#if isShowingDrawer}
-      <div class="drawer-content" transition:slide>
+      <div class="drawer-content color-transition" transition:slide>
         {#if !$isLoggedIn}
           <button class="secondary-button" on:click={handleLogin}>Login (SSO UI)</button>
         {:else}
