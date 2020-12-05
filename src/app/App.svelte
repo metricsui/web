@@ -237,8 +237,7 @@
     justify-content: end;
   }
 
-  :global(button),
-  :global(.primary-button) {
+  :global(button) {
     background-color: var(--primary-color);
     color: var(--on-primary-color);
     border: none;
@@ -293,14 +292,12 @@
   }
 
   :global(button:focus),
-  :global(.primary-button:focus),
   :global(.primary-button2:focus),
   :global(.secondary-button:focus) {
     outline: none;
   }
 
   :global(button:hover),
-  :global(.primary-button:hover),
   :global(.primary-button2:hover),
   :global(.secondary-button:hover) {
     cursor: pointer;

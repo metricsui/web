@@ -262,7 +262,7 @@
           *Applicants can only be from Computer Science UI for now
         </div>
         <div class="button-container">
-          <a href="#/dashboard" class="primary-button" id="let-me-know-button">Start now</a>
+          <a href="#/dashboard" class="primary-button2" id="let-me-know-button">Start now</a>
         </div>
       </div>
       <img src="images/landing_asset.svg" alt="illustration-1" />
