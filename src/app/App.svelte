@@ -217,6 +217,10 @@
     flex-direction: column;
   }
 
+  :global(.flex-wrap) {
+    flex-wrap: wrap;
+  }
+
   :global(.justify-content-center) {
     justify-content: center;
   }

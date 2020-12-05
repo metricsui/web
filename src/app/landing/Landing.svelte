@@ -9,6 +9,7 @@
     shouldShowNavbarLogo,
   } from './state/scroll'
   import { onMount } from 'svelte'
+  import HowItAllStartedSection from './components/how-it-all-started/HowItAllStartedSection.svelte'
 
   function scrollTo(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' })
@@ -93,17 +94,18 @@
     animation: slide 1s linear infinite;
   }
 
-  .desktop-arrow-icon {
-    display: none;
-  }
-
-  .mobile-icon {
-    display: none;
+  .content-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    /* scroll-snap-align: start; */
   }
 
   @media screen and (max-width: 640px) {
     .wrapper {
-      scroll-snap-type: y mandatory;
+      /* scroll-snap-type: y mandatory; */
     }
 
     .content-wrapper {
@@ -119,7 +121,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       scroll-snap-align: start;
       position: relative;
       margin: 0;
@@ -152,14 +154,6 @@
   }
 
   @media screen and (min-width: 640px) {
-    .content-wrapper {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      scroll-snap-align: start;
-    }
     .desktop-arrow-icon {
       display: block;
     }
@@ -232,14 +226,14 @@
 
   @media screen and (max-width: 640px) {
     footer {
-      height: calc(1.5 * var(--app-height));
+      height: var(--app-height);
       padding-left: 0px;
       padding-right: 0px;
       padding-top: 0;
       padding-bottom: 0;
       justify-content: center;
       align-items: center;
-      scroll-snap-align: center;
+      /* scroll-snap-align: center; */
     }
 
     .limiter {
@@ -272,16 +266,13 @@
         </div>
       </div>
       <img src="images/landing_asset.svg" alt="illustration-1" />
-      <div class="arrow-icon mobile-icon" on:click={() => scrollTo('section-3')}>
-        <FaAngleDown />
-      </div>
     </div>
-
-
-  <div class="arrow-icon desktop-arrow-icon" on:click={() => scrollTo('section-4')}>
-    <FaAngleDown />
+    <div class="arrow-icon" on:click={() => scrollTo('section-2')}>
+      <FaAngleDown />
+    </div>
   </div>
-  </div>
+
+  <HowItAllStartedSection />
   <!-- Content Ends-->
 
   <footer class="color-transition">
