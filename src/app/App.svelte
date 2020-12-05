@@ -271,6 +271,10 @@
     cursor: pointer;
   }
 
+  :global(button:disabled) {
+    filter: opacity(50%);
+  }
+
   :global(.primary-button2 .l-icon) {
     margin-right: 0.5rem;
   }
