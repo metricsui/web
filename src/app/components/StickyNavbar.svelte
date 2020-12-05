@@ -1,11 +1,12 @@
 <script>
   import { fade, slide } from 'svelte/transition'
   import ThemeToggler from '../ThemeToggler.svelte'
-  import { handleLogin, handleLogout } from '../utils'
+  import { handleLogin, handleLogout, redirectTo } from '../utils'
   import { isLoggedIn, isMobileScreen } from '../stores'
   import MetricsLogo from './MetricsLogo.svelte'
   import IcClose from 'svelte-icons/fa/FaTimes.svelte'
   import IcMenu from 'svelte-icons/fa/FaBars.svelte'
+  import { location } from 'svelte-spa-router'
 
   export let showLogo = true
   export let useAnimation = false
@@ -14,6 +15,12 @@
 
   function toggleDrawer() {
     isShowingDrawer = !isShowingDrawer
+  }
+
+  $: isLanding = $location === `/`
+
+  function redirectToDashboard() {
+    redirectTo('/dashboard')
   }
 </script>
 
@@ -99,12 +106,12 @@
     <div class="nav-content color-transition">
       {#if (isShowingDrawer || showLogo) && useAnimation}
         <div class="logo-wrapper" transition:fade>
-          <MetricsLogo />
+          <MetricsLogo clickable />
         </div>
       {/if}
       {#if (isShowingDrawer || showLogo) && !useAnimation}
         <div class="logo-wrapper">
-          <MetricsLogo />
+          <MetricsLogo clickable />
         </div>
       {/if}
 
@@ -119,7 +126,7 @@
         {:else}
           <button
             class="secondary-button"
-            on:click={handleLogout}>Logout</button>
+            on:click={isLanding ? redirectToDashboard : handleLogout}>{isLanding ? 'Dashboard' : 'Logout'}</button>
         {/if}
       {:else if isShowingDrawer}
         <div class="icon-menu" on:click={toggleDrawer} in:fade>
@@ -139,7 +146,7 @@
         {:else}
           <button
             class="secondary-button"
-            on:click={handleLogout}>Logout</button>
+            on:click={isLanding ? redirectToDashboard : handleLogout}>{isLanding ? 'Dashboard' : 'Logout'}</button>
         {/if}
         <div class="drawer-item-space" />
         <div class="toggler-wrapper-mobile">

@@ -1,3 +1,4 @@
+import { replace } from 'svelte-spa-router'
 import { get } from 'svelte/store'
 
 import { ERROR_CODE } from './constants'
@@ -45,6 +46,11 @@ export function handleLogout() {
   jwtToken.set(null)
   localStorage.removeItem('token')
   location.href = `https://akun-kp.cs.ui.ac.id/cas/logout?service=${DOMAIN}`
+}
+
+// Single-page redirect without reload using SPA replace
+export function redirectTo(url) {
+  replace(url)
 }
 
 export function isReauthenticateNeeded(apiStatus) {
