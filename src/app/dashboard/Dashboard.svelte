@@ -13,6 +13,7 @@
   const { addNotification } = getNotificationsContext()
 
   onMount(() => {
+    console.log('hahaha')
     if (!$isLoggedIn) {
       handleLogin()
       return
@@ -93,7 +94,7 @@
     {#if $dashboardApiStatus.loading}
       <FullScreenLoadingIndicator />
     {:else if !$dashboardApiStatus.loaded && $dashboardApiStatus.errorCode != null}
-      <div>Something wrong :(</div>
+      <div>Something went wrong 😱</div>
     {:else if $dashboardApiStatus.loaded}
       <div class="dashboard-content">
         <UserSpace />
