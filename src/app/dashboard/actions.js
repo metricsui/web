@@ -1,9 +1,9 @@
 import { getDashboard } from '../api'
-import { dashboard, apiStatus } from '../stores'
+import { dashboard, dashboardApiStatus } from '../stores'
 import { isReauthenticateNeeded } from '../utils'
 
 export async function loadDashboard() {
-  await apiStatus.update((val) => ({
+  await dashboardApiStatus.update((val) => ({
     ...val,
     loading: true,
   }))
@@ -13,7 +13,7 @@ export async function loadDashboard() {
 
     // need to reauthenticate
     if (isReauthenticateNeeded(status)) {
-      apiStatus.update((val) => ({
+      dashboardApiStatus.update((val) => ({
         ...val,
         errorCode: status,
         loading: true,
@@ -22,7 +22,7 @@ export async function loadDashboard() {
     }
 
     if (status >= 300 || data == null) {
-      apiStatus.update((val) => ({
+      dashboardApiStatus.update((val) => ({
         ...val,
         errorCode: status ?? 500,
         errorPayload: data,
@@ -32,14 +32,14 @@ export async function loadDashboard() {
     }
 
     dashboard.set(data)
-    apiStatus.set({
+    dashboardApiStatus.set({
       loading: false,
       errorCode: null,
       errorPayload: null,
       loaded: true,
     })
   } catch (e) {
-    apiStatus.update((val) => ({
+    dashboardApiStatus.update((val) => ({
       ...val,
       errorCode: 500,
       loading: false,

@@ -2,13 +2,11 @@
   import { onDestroy, onMount } from 'svelte'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
   import StickyNavbar from '../components/StickyNavbar.svelte'
-  import { isLoggedIn, apiStatus, user } from '../stores'
+  import { isLoggedIn, dashboardApiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
   import { loadDashboard } from './actions'
   import { getNotificationsContext } from 'svelte-notifications'
-  import { ERROR_CODE } from '../constants'
-  import Unauthorized from './components/Unauthorized.svelte'
 
   let unsubscribeApiStatus = null
 
@@ -20,7 +18,7 @@
       return
     }
 
-    unsubscribeApiStatus = apiStatus.subscribe((currentApiStatus) => {
+    unsubscribeApiStatus = dashboardApiStatus.subscribe((currentApiStatus) => {
       if (isReauthenticateNeeded(currentApiStatus)) {
         addNotification({
           text: 'Redirect to login',
@@ -31,7 +29,7 @@
         return
       }
 
-      if ($apiStatus.loaded && currentApiStatus.errorCode != null) {
+      if (dashboardApiStatus.loaded && currentApiStatus.errorCode != null) {
         addNotification({
           text: `Something wrong (${currentApiStatus.errorCode})`,
           position: 'bottom-right',
@@ -92,15 +90,11 @@
 <div class="wrapper">
   <StickyNavbar />
   <div class="container">
-    {#if $apiStatus.loading}
+    {#if $dashboardApiStatus.loading}
       <FullScreenLoadingIndicator />
-    {:else if $apiStatus.errorPayload != null && $apiStatus.errorCode === ERROR_CODE.UN_AUTHORIZED}
-      <Unauthorized
-        username={$user.name}
-        faculty={$apiStatus.errorPayload.faculty} />
-    {:else if !$apiStatus.loaded && $apiStatus.errorCode != null}
+    {:else if !$dashboardApiStatus.loaded && $dashboardApiStatus.errorCode != null}
       <div>Something wrong :(</div>
-    {:else if $apiStatus.loaded}
+    {:else if $dashboardApiStatus.loaded}
       <div class="dashboard-content">
         <UserSpace />
       </div>
