@@ -13,7 +13,6 @@
   let loading = true
   onMount(() => {
     const params = new URLSearchParams(location.search || $querystring)
-    console.log($querystring)
     if (params.has('force_login')) {
       handleLogin()
     } else {

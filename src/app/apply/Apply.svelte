@@ -59,15 +59,11 @@
     ) {
       await loadDashboard()
     }
-    console.log('finish load dashboard')
-    console.log($dashboard)
-    console.log('step type: ', $dashboard.action.step.type)
     if ($dashboard.action.step.type !== 'apply') {
       replace('/dashboard')
     } else {
       isLoading = false
     }
-    console.log(isLoading)
   })
 
   onDestroy(() => {
