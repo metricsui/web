@@ -1,4 +1,38 @@
 <script>
+  import PathMobile from './components/PathMobile.svelte'
+
+  const PATHS = [
+    {
+      pathName: 'Data Science & Analytics',
+      description:
+        'Wrangling data into meaningful assets might be hard for some, but fun for you.',
+      mentors: [],
+    },
+    {
+      pathName: 'Product Management',
+      description: '',
+      mentors: [],
+    },
+    {
+      pathName: 'Product Design',
+      description: '',
+      mentors: [],
+    },
+    {
+      pathName: 'Software Engineering',
+      description:
+        'If you enjoy programming & solving problems through lines of code while catching bugs along the way, that’s a strong hint you might like software engineering internship!',
+      mentors: [],
+    },
+  ]
+
+  let selectedPathIndex = 0
+
+  function selectPath(pathIndex) {
+    return () => {
+      selectedPathIndex = pathIndex
+    }
+  }
 </script>
 
 <style>
@@ -12,6 +46,15 @@
     line-height: 2rem;
     letter-spacing: 0.5px;
     margin-bottom: 2rem;
+  }
+
+  .paths {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paths .path-wrapper:not(:last-child) {
+    margin-bottom: 1rem;
   }
 
   @media only screen and (min-width: 1024px) {
@@ -31,4 +74,15 @@
     Metrics provides you fully-fledged professional mentors to help develop
     skills of four most demanding fields in the tech industry
   </p>
+  <div class="paths">
+    {#each PATHS as path, i}
+      <div class="path-wrapper">
+        <PathMobile
+          pathName={path.pathName}
+          description={path.description}
+          isOpen={selectedPathIndex === i}
+          onClick={selectPath(i)} />
+      </div>
+    {/each}
+  </div>
 </div>
