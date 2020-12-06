@@ -10,10 +10,10 @@
   }
 
   @media only screen and (min-width: 1024px) {
-    .section h3 {
+    #section-6 h3,
+    .description-text {
       width: 50%;
     }
-
     #section-6 .secondary-button {
       width: 7.25rem;
     }
