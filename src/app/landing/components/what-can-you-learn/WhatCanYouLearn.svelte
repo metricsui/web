@@ -47,8 +47,8 @@
 <div class="section" id="section-3">
   <h6 class="primary-color">What can you learn</h6>
   <h3 class="font-medium">
-    Learn about pretty much everything you need to know about landing your first
-    internship in Tech Companies
+    Learn about pretty much everything you need to know about landing your dream
+    internship on your chosen path
   </h3>
   <p class="description">
     Metrics provides you fully-fledged professional mentors to help develop

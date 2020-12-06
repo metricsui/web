@@ -20,7 +20,7 @@
   $: isLanding = $location === `/`
 
   function redirectToDashboard() {
-    redirectTo('/dashboard')
+    redirectTo('/dashboard?force_login=true')
   }
 </script>
 
