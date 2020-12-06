@@ -47,7 +47,7 @@
 </style>
 
 <div class="section" id="section-5">
-  <h6 class="primary-color">How it all started</h6>
+  <h6 class="primary-color">How do I sign up?</h6>
   <ul class="steps-container">
     <li class="font-normal step-item">
       Apply from this website
