@@ -13,10 +13,15 @@
     letter-spacing: 0.4px;
   }
 
+  .value-and-culture-wrapper {
+    width: 33%;
+    margin-right: 1.5rem;
+  }
+
   @media screen and (max-width: 1024px) {
     .value-and-culture-wrapper {
-      flex: 0 50%;
       margin-top: 1.75rem;
+      width: 100%;
     }
   }
 </style>

@@ -54,7 +54,7 @@
 </style>
 
 <div class="section" id="section-5">
-  <h6 class="primary-color">How do I sign up?</h6>
+  <h6 class="primary-color">How to start your journey with us</h6>
   <ul class="steps-container">
     <li class="font-normal step-item">
       Apply through our website
@@ -67,18 +67,20 @@
     </li>
     <li class="font-normal step-item">
       Once the application is submitted,
-      <span class="primary-color">check your dashboard</span>
+      <a class="primary-color" href="/#/apply?force_login=true">check your
+        dashboard</a>
       for the task assignments
     </li>
     <li class="font-normal step-item">
       <span class="primary-color">Submit your finished assignment</span>
       through
-      <a href="/#/apply" class="primary-color">your dashboard</a>
+      <a href="/#/apply?force_login=true" class="primary-color">your dashboard</a>
       before
       {submissionDeadline}
     </li>
     <li class="font-normal step-item">
-      <span class="primary-color">Schedule an interview</span>
+      We’ll notify you to
+      <span class="primary-color">schedule an interview with us</span>
       so we can know you better
     </li>
     <li class="font-bold primary-color step-item">

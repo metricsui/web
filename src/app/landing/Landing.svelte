@@ -249,10 +249,10 @@
         <h1 class="font-light">Start-up your tech career</h1>
         <h5>Landing your tech internship has never been easier</h5>
         <div class="body-text">
-          Join our 14-weeks intensive mentoring program with former tech interns from leading companies*
+          Join our 10-weeks intensive mentoring program with experienced mentors who are ready to guide you*
         </div>
         <div class="eligible-applicants-text">
-          *Applicants can only be from Computer Science UI for now
+          *Applicants are limited to the students of the Faculty of Computer Science Universitas Indonesia for now
         </div>
         <div class="button-container">
           <a href="#/apply?force_login=true" class="primary-button2" id="let-me-know-button">Start now</a>
