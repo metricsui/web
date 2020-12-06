@@ -170,7 +170,7 @@
   footer {
     width: 100vw;
     background-color: #f1f1f1;
-    padding: 2rem var(--horizontal-margin);
+    padding: var(--landing-section-padding-vertical) var(--horizontal-margin);
     display: flex;
     align-items: center;
   }
@@ -220,8 +220,7 @@
 
   @media screen and (max-width: 640px) {
     footer {
-      padding-left: 0px;
-      padding-right: 0px;
+      padding: 2rem 0;
       justify-content: center;
       align-items: center;
       /* scroll-snap-align: center; */
