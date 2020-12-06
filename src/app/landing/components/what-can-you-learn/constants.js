@@ -5,22 +5,22 @@ export const PATHS = [
       'Wrangling data into meaningful assets might be hard for some, but fun for you.',
     mentors: [
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
@@ -42,22 +42,22 @@ export const PATHS = [
       'If you enjoy programming & solving problems through lines of code while catching bugs along the way, that’s a strong hint you might like software engineering internship!',
     mentors: [
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },
       {
-        mentorName: 'Irene',
+        mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
       },

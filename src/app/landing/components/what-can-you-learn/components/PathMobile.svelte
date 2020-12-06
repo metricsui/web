@@ -28,7 +28,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 1.25rem 1rem;
+    padding: 1.25rem;
     box-sizing: border-box;
   }
 
@@ -37,7 +37,7 @@
   }
 
   .content {
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1.25rem 1.25rem 1.25rem;
   }
 
   .content .description {
@@ -71,8 +71,19 @@
   }
 
   .mentor-list {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media only screen and (max-width: 640px) {
+    .head {
+      padding: 1.25rem 1rem;
+    }
+
+    .content {
+      padding: 0 1rem 1rem 1rem;
+    }
   }
 </style>
 
