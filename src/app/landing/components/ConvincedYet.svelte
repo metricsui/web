@@ -35,18 +35,22 @@
     padding-bottom: 1.5rem;
     font-size: 1.25rem;
   }
+
+  .secondary-button {
+    background-color: #fafafa;
+  }
 </style>
 
 <div class="section" id="section-6">
-  <h3 class="font-medium">Convinced, yet?</h3>
+  <h3 class="font-medium">Convinced yet?</h3>
   <div class="font-medium help-us-text">Help us help you!</div>
   <div class="description-text">
-    We are commited in helping you jumstart your tech career. Good mentors is
+    We are commited in helping you jumpstart your tech career. Good mentors is
     one of the key ingredients of a successful and fulfilling career.
   </div>
   <div class="registration-text">
     Registration opens now until
-    <span class="font-bold">14th December 2020 at 23.55 (GMT+7)</span>
+    <span class="font-bold">16th December 2020 at 23.55 (GMT+7)</span>
   </div>
   <a class="secondary-button" href="/#/apply?force_login=true"> Start now </a>
 </div>
