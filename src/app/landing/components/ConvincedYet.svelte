@@ -48,5 +48,5 @@
     Registration opens now until
     <span class="font-bold">14th December 2020 at 23.55 (GMT+7)</span>
   </div>
-  <a class="secondary-button" href="/#/apply"> Start now </a>
+  <a class="secondary-button" href="/#/apply?force_login=true"> Start now </a>
 </div>

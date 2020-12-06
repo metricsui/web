@@ -6,17 +6,26 @@
   import { handleLogin } from '../utils'
 
   import MetricsLogo from './MetricsLogo.svelte'
+  import { querystring } from 'svelte-spa-router'
+  import FullScreenLoadingIndicator from './FullScreenLoadingIndicator.svelte'
 
   let redirectIn = 3
-
+  let loading = true
   onMount(() => {
-    const updateRedirectInInterval = setInterval(function () {
-      redirectIn -= 1
-      if (redirectIn === 0) {
-        clearInterval(updateRedirectInInterval)
-        handleLogin()
-      }
-    }, 1000)
+    const params = new URLSearchParams(location.search || $querystring)
+    console.log($querystring)
+    if (params.has('force_login')) {
+      handleLogin()
+    } else {
+      loading = false
+      const updateRedirectInInterval = setInterval(function () {
+        redirectIn -= 1
+        if (redirectIn === 0) {
+          clearInterval(updateRedirectInInterval)
+          // handleLogin()
+        }
+      }, 1000)
+    }
   })
 </script>
 
@@ -86,35 +95,39 @@
   }
 </style>
 
-<div class="wrapper">
-  <StickyNavbar />
-  <div class="container">
-    <div class="image-container">
-      <MetricsLogo />
-    </div>
-    <div class="title">Unauthorized 😱</div>
-    {#if !$isLoggedIn}
-      <div class="description">
-        You are trying to access page that requires authorization.<br />
-        Please sign-in first.
+{#if loading}
+  <FullScreenLoadingIndicator loadingText="Loading..." />
+{:else}
+  <div class="wrapper">
+    <StickyNavbar />
+    <div class="container">
+      <div class="image-container">
+        <MetricsLogo />
       </div>
-    {:else}
-      <div class="description">Your session has expired.</div>
-    {/if}
-    <div class="redirect">
-      Redirecting you to
-      <span class="primary-color">Sign In</span>
-      in
-      {redirectIn}
-      seconds...
+      <div class="title">Unauthorized 😱</div>
+      {#if !$isLoggedIn}
+        <div class="description">
+          You are trying to access page that requires authorization.<br />
+          Please sign-in first.
+        </div>
+      {:else}
+        <div class="description">Your session has expired.</div>
+      {/if}
+      <div class="redirect">
+        Redirecting you to
+        <span class="primary-color">Sign In</span>
+        in
+        {redirectIn}
+        seconds...
+      </div>
+      <button on:click={handleLogin}> Sign In Now </button>
+      <div class="sign-in-hint">* please sign-in using your UI SSO</div>
     </div>
-    <button on:click={handleLogin}> Sign In Now </button>
-    <div class="sign-in-hint">* please sign-in using your UI SSO</div>
-  </div>
-  <div class="section-description">
-    <div>Not a CSUI student?</div>
-    <div class="font-normal notice-text">
-      Sorry, for now candidates are limited from Computer Science UI 😢
+    <div class="section-description">
+      <div>Not a CSUI student?</div>
+      <div class="font-normal notice-text">
+        Sorry, for now candidates are limited from Computer Science UI 😢
+      </div>
     </div>
   </div>
-</div>
+{/if}

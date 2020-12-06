@@ -1,5 +1,5 @@
 <script>
-  import Router, { replace } from 'svelte-spa-router'
+  import Router, { querystring, replace } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
   import { onMount, onDestroy } from 'svelte'
   import {
@@ -29,7 +29,7 @@
 
   let unsubscriberColorScheme = null
 
-  $: params = new URLSearchParams(location.search)
+  $: params = new URLSearchParams(location.search || $querystring)
   $: if ('token' in localStorage) jwtToken.set(localStorage.token || '')
 
   let isSigningIn = false

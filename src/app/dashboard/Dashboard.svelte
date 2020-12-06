@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
   import StickyNavbar from '../components/StickyNavbar.svelte'
-  import { dashboardApiStatus } from '../stores'
+  import { dashboard, dashboardApiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
   import { loadDashboard } from './actions'
@@ -32,7 +32,14 @@
         })
       }
     })
-    loadDashboard()
+    if (
+      !$dashboard ||
+      !$dashboard.action ||
+      $dashboard.action.step ||
+      $dashboard.action.step.type
+    ) {
+      await loadDashboard()
+    }
   })
 
   onDestroy(() => {
@@ -46,16 +53,18 @@
   .wrapper {
     text-align: left;
     width: 100%;
-    height: 100vh;
-
+    height: var(--app-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow-y: scroll;
     overflow-x: hidden;
   }
   .container {
     position: relative;
-    margin: 10rem 2rem;
     display: flex;
     justify-content: center;
+    margin: 0 10% 2rem;
   }
 
   .dashboard-content {
@@ -87,18 +96,20 @@
 
 <div class="wrapper">
   <StickyNavbar />
-  <div class="container">
-    {#if $dashboardApiStatus.loading}
-      <FullScreenLoadingIndicator />
-    {:else if !$dashboardApiStatus.loaded && $dashboardApiStatus.errorCode != null}
-      <div>Something went wrong 😱</div>
-    {:else if $dashboardApiStatus.loaded}
-      <div class="dashboard-content">
-        <UserSpace />
-      </div>
-      <div class="img-container">
-        <img src="images/dashboard-img.svg" alt="dashboard-img.svg" />
-      </div>
-    {/if}
-  </div>
+  {#if $dashboardApiStatus.loading}
+    <FullScreenLoadingIndicator />
+  {:else}
+    <div class="container">
+      {#if !$dashboardApiStatus.loaded && $dashboardApiStatus.errorCode != null}
+        <div>Something went wrong 😱</div>
+      {:else if $dashboardApiStatus.loaded}
+        <div class="dashboard-content">
+          <UserSpace />
+        </div>
+        <div class="img-container">
+          <img src="images/dashboard-img.svg" alt="dashboard-img.svg" />
+        </div>
+      {/if}
+    </div>
+  {/if}
 </div>
