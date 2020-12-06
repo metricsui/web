@@ -43,7 +43,7 @@
     one of the key ingredients of a successful and fulfilling career.
   </div>
   <div class="registration-text">
-    Registration opens now until 30th November 2020 at 23.55
+    Registration opens now until 30th November 2020 at 23.55 (GMT+7)
   </div>
   <a class="secondary-button" href="/#/apply"> Start now </a>
 </div>
