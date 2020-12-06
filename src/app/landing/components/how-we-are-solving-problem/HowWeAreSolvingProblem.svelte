@@ -1,4 +1,5 @@
 <script>
+  import Activity from './components/Activity.svelte'
 </script>
 
 <style>
@@ -89,53 +90,20 @@
   <h3 class="font-medium">Finding the right people to mentor you</h3>
   <div class="space-activity" />
 
-  <div class="activity">
-    <div class="img-wrapper">
-      <img
-        alt="mentoring"
-        src="https://www.rmit.edu.au/content/dam/rmit/multimedia/video/youtube-images/marketing/online/flexible-study-02-1280x732.jpg" />
-    </div>
-    <div class="space" />
-    <div class="content">
-      <div class="title font-medium">Intensive Coaching</div>
-      <p class="description">
-        You’ll be paired with a great mentor that will be both caring and
-        reliable
-      </p>
-    </div>
-  </div>
+  <Activity
+    title="Intensive Coaching"
+    description="You’ll be paired with a great mentor that will be both caring and reliable"
+    imageUrl="images/intensive_coaching.png" />
   <div class="space-activity" />
 
-  <div class="activity">
-    <div class="img-wrapper">
-      <img
-        alt="mentoring"
-        src="https://www.rmit.edu.au/content/dam/rmit/multimedia/video/youtube-images/marketing/online/flexible-study-02-1280x732.jpg" />
-    </div>
-    <div class="space" />
-    <div class="content">
-      <div class="title font-medium">Intensive Coaching</div>
-      <p class="description">
-        You’ll be paired with a great mentor that will be both caring and
-        reliable
-      </p>
-    </div>
-  </div>
+  <Activity
+    title="Mock Interview"
+    description="We’ll help navigate the nitty-gritty details of what to prepare and do on interviews"
+    imageUrl="images/mock_interview.png" />
   <div class="space-activity" />
 
-  <div class="activity">
-    <div class="img-wrapper">
-      <img
-        alt="mentoring"
-        src="https://www.rmit.edu.au/content/dam/rmit/multimedia/video/youtube-images/marketing/online/flexible-study-02-1280x732.jpg" />
-    </div>
-    <div class="space" />
-    <div class="content">
-      <div class="title font-medium">Intensive Coaching</div>
-      <p class="description">
-        Mentor will share their technical tests to get a glimpse of the path
-        you’re embarking on
-      </p>
-    </div>
-  </div>
+  <Activity
+    title="Task Exercise"
+    description="Mentor will share their technical tests to get a glimpse of the path you’re embarking on"
+    imageUrl="images/task_exercise.png" />
 </div>

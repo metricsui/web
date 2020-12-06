@@ -11,7 +11,7 @@
   import { onMount } from 'svelte'
   import HowItAllStartedSection from './components/how-it-all-started/HowItAllStartedSection.svelte'
   import HowDoISignUp from './components/HowDoISignUp.svelte'
-  import HowWeAreSolvingProblem from './components/HowWeAreSolvingProblem.svelte'
+  import HowWeAreSolvingProblem from './components/how-we-are-solving-problem/HowWeAreSolvingProblem.svelte'
   import WhatCanYouLearn from './components/what-can-you-learn/WhatCanYouLearn.svelte'
   import ConvincedYet from './components/ConvincedYet.svelte'
 
@@ -69,6 +69,7 @@
 
   .button-container {
     font-weight: bold;
+    width: 30%;
   }
 
   .left-column h1 {
