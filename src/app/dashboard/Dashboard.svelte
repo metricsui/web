@@ -15,7 +15,7 @@
     unsubscribeApiStatus = dashboardApiStatus.subscribe((currentApiStatus) => {
       if (isReauthenticateNeeded(currentApiStatus)) {
         addNotification({
-          text: 'Redirect to login',
+          text: 'Redirecting you to Sign-In',
           position: 'bottom-right',
           type: 'warning',
         })

@@ -17,7 +17,6 @@ export function syncCurrentUrlWithParams(params) {
 
 export function handleLogin() {
   const currentLocation = get(spaLocation)
-  console.log('currentLoc: ', currentLocation)
   if (currentLocation && currentLocation !== '/') {
     localStorage.redirectAfterLogin = currentLocation
   }

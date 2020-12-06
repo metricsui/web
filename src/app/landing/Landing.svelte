@@ -43,7 +43,7 @@
   .wrapper {
     text-align: left;
     width: 100%;
-    height: 100vh;
+    height: var(--app-height);
 
     overflow-y: scroll;
     overflow-x: hidden;

@@ -12,13 +12,13 @@
     jwtToken,
     isLoggedIn,
     isTokenStillValid,
+    shouldShowUnauthorizedPage,
   } from './stores'
   import { syncCurrentUrlWithParams } from './utils'
   import Landing from './landing/Landing.svelte'
   import Dashboard from './dashboard/Dashboard.svelte'
   import Apply from './apply/Apply.svelte'
   import FullScreenLoadingIndicator from './components/FullScreenLoadingIndicator.svelte'
-  import Error403 from './Error403/Error403.svelte'
   import NotFound from './components/NotFound.svelte'
   import Unauthorized from './components/Unauthorized.svelte'
   import { getNotificationsContext } from 'svelte-notifications'
@@ -99,7 +99,6 @@
     window.document.body.classList.toggle('dark')
   }
 
-  let isUnauthorized = false
   const authGuard = async () => {
     if (!$isLoggedIn) {
       return false
@@ -110,7 +109,6 @@
   }
 
   const routes = {
-    '/403': Error403,
     '/dashboard': wrap({
       component: Dashboard,
       conditions: [authGuard],
@@ -129,8 +127,7 @@
 
   // When auth guard fails
   function onConditionsFailed() {
-    isUnauthorized = true
-    console.log('onConditionsFailed')
+    shouldShowUnauthorizedPage.set(true)
   }
 </script>
 
@@ -405,7 +402,7 @@
 <main>
   {#if isSigningIn}
     <FullScreenLoadingIndicator loadingText="Signing you in..." />
-  {:else if isUnauthorized}
+  {:else if $shouldShowUnauthorizedPage}
     <Unauthorized />
   {:else}
     <Router
