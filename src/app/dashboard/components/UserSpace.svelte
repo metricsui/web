@@ -96,6 +96,10 @@
   #ActionButton {
     width: min(100px, 50vw);
   }
+
+  .exact-deadline {
+    margin-top: 1rem;
+  }
 </style>
 
 <div class="container">
@@ -157,7 +161,7 @@
               const days = Math.floor(hours / 24)
 
               const val = days ?? hours ?? mins ?? secs
-              const desc = (val > 0 ? ' left' : '') + ' for you to submit'
+              const desc = val > 0 ? ' left' : ''
               // prettier-ignore
               const unit = days > 0 ? 
                 'day' : hours > 0 ? 
@@ -165,9 +169,19 @@
                 'minute' : secs > 0 ? 
                 'second' : 'day' // days should be negative -> truthy
 
-              return rtf.format(val, unit) + desc
+              const deadlineText = rtf.format(val, unit) + desc
+              if (deadlineText.startsWith('in')) {
+                return deadlineText.substring(3)
+              }
+              return deadlineText
             })()}
           </span>
+          <span>for you to submit</span>
+        </div>
+        <div class="primary-color exact-deadline">
+          Exact deadline:
+          <br />
+          {new Date($dashboard.action.deadline)}
         </div>
       </div>
     {/if}
