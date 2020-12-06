@@ -58,7 +58,7 @@
   <ul class="steps-container">
     <li class="font-normal step-item">
       Apply through our website
-      <a class="primary-color" href="/#/apply">here</a>
+      <a class="primary-color" href="/#/apply?force_login=true">here</a>
     </li>
     <li class="font-normal step-item">
       Choose

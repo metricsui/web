@@ -61,3 +61,5 @@ export const isMobileScreen = readable(true, (set) => {
     queryResult.removeEventListener('change', onQueryChange)
   }
 })
+
+export const shouldShowUnauthorizedPage = writable(false)
