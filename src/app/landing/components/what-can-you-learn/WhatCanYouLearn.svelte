@@ -6,7 +6,11 @@
 
   function selectPath(pathIndex) {
     return () => {
-      selectedPathIndex = pathIndex
+      if (selectedPathIndex === pathIndex) {
+        selectedPathIndex = null
+      } else {
+        selectedPathIndex = pathIndex
+      }
     }
   }
 </script>

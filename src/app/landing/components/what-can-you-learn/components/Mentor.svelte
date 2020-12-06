@@ -9,6 +9,7 @@
   .mentor {
     flex: 1;
     box-sizing: border-box;
+    margin: 1rem 0;
   }
 
   .mentor:not(:last-child) {
@@ -27,19 +28,20 @@
   .mentor-photo {
     position: relative;
     width: 100%;
-    height: 9.625rem;
+    height: 14rem;
     margin-bottom: 1rem;
     box-sizing: border-box;
+    filter: grayscale(100%);
   }
 
   .mentor-photo::before {
     content: '';
     position: absolute;
-    background: linear-gradient(
+    /* background: linear-gradient(
       180deg,
       rgba(216, 49, 91, 0.7) 0%,
       rgba(216, 49, 91, 0.5) 100%
-    );
+    ); */
     background-blend-mode: multiply;
     width: 100%;
     height: 100%;
@@ -64,10 +66,11 @@
     .mentor p {
       margin-bottom: 0;
       padding-right: 5%;
+      margin-top: 0.25rem;
     }
     .mentor-photo {
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 25vw;
+      height: 25vw;
     }
   }
 </style>
