@@ -113,10 +113,6 @@
     '/dashboard': wrap({
       component: Dashboard,
       conditions: [authGuard],
-      loadingComponent: FullScreenLoadingIndicator,
-      loadingParams: {
-        loadingText: 'Loading...',
-      },
     }),
     '/apply': wrap({
       component: Apply,
@@ -391,7 +387,6 @@
 
   /* TODO(adalberht): Refactor main to different component */
   main {
-    display: flex;
     width: 100vw;
     height: 100vh;
     text-align: center;
@@ -406,9 +401,6 @@
   {:else if $shouldShowUnauthorizedPage}
     <Unauthorized />
   {:else}
-    <Router
-      {routes}
-      restoreScrollState={true}
-      on:conditionsFailed={onConditionsFailed} />
+    <Router {routes} on:conditionsFailed={onConditionsFailed} />
   {/if}
 </main>

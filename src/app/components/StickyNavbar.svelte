@@ -1,7 +1,7 @@
 <script>
   import { fade, slide } from 'svelte/transition'
   import ThemeToggler from '../ThemeToggler.svelte'
-  import { handleLogin, handleLogout, redirectTo } from '../utils'
+  import { handleLogin, handleLogout } from '../utils'
   import { isLoggedIn, isMobileScreen } from '../stores'
   import MetricsLogo from './MetricsLogo.svelte'
   import IcClose from 'svelte-icons/fa/FaTimes.svelte'
@@ -20,7 +20,7 @@
   $: isLanding = $location === `/`
 
   function redirectToDashboard() {
-    redirectTo('/dashboard?force_login=true')
+    window.location.href = '#/dashboard?force_login=true'
   }
 </script>
 
