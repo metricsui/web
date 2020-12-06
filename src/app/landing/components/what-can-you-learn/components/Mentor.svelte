@@ -27,8 +27,8 @@
 
   .mentor-photo {
     position: relative;
-    width: 100%;
-    height: 14rem;
+    width: min(25vw, 14rem);
+    height: min(25vw, 14rem);
     margin-bottom: 1rem;
     box-sizing: border-box;
     filter: grayscale(100%);
