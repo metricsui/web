@@ -22,16 +22,18 @@
   .help-us-text {
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
-    font-size: var(--h6-size);
+    font-size: 1.5rem;
     line-height: 2.25rem;
   }
 
   .description-text {
     padding-bottom: 2rem;
+    font-size: 1.25rem;
   }
 
   .registration-text {
     padding-bottom: 1.5rem;
+    font-size: 1.25rem;
   }
 </style>
 
@@ -43,7 +45,8 @@
     one of the key ingredients of a successful and fulfilling career.
   </div>
   <div class="registration-text">
-    Registration opens now until 30th November 2020 at 23.55 (GMT+7)
+    Registration opens now until
+    <span class="font-bold">14th December 2020 at 23.55 (GMT+7)</span>
   </div>
   <a class="secondary-button" href="/#/apply"> Start now </a>
 </div>

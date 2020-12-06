@@ -1,4 +1,5 @@
 <script>
+  export let submissionDeadline = '30th December 2020 11:55PM'
 </script>
 
 <style>
@@ -44,41 +45,41 @@
     border-radius: 50%;
     background-color: var(--primary-color);
   }
+
+  @media screen and (max-width: 640px) {
+    .section {
+      min-height: var(--app-height);
+    }
+  }
 </style>
 
 <div class="section" id="section-5">
   <h6 class="primary-color">How do I sign up?</h6>
   <ul class="steps-container">
     <li class="font-normal step-item">
-      Apply from this website
-      <!-- TODO: change href to fix URL -->
+      Apply through our website
       <a class="primary-color" href="/#/apply">here</a>
     </li>
     <li class="font-normal step-item">
       Choose
       <span class="primary-color">one</span>
-      of the four fields in your application
+      of the four paths in your application
     </li>
     <li class="font-normal step-item">
-      Once submitted,
-      <span class="primary-color">check your email</span>
-      for assignments
+      Once the application is submitted,
+      <span class="primary-color">check your dashboard</span>
+      for the task assignments
     </li>
     <li class="font-normal step-item">
-      Submit your finished assignment to
-      <a
-        class="primary-color"
-        href="mailto:metricsui@gmail.com">metricsui@gmail.com</a>
+      <span class="primary-color">Submit your finished assignment</span>
+      through
+      <a href="/#/apply" class="primary-color">your dashboard</a>
+      before
+      {submissionDeadline}
     </li>
     <li class="font-normal step-item">
-      Wait for
-      <span class="primary-color">x days</span>
-      to get called for an interview
-    </li>
-    <li class="font-normal step-item">
-      Give
-      <span class="primary-color">your best</span>
-      on the interview
+      <span class="primary-color">Schedule an interview</span>
+      so we can know you better
     </li>
     <li class="font-bold primary-color step-item">
       Become our first batch mentees!

@@ -70,6 +70,7 @@
   .button-container {
     font-weight: bold;
     width: 30%;
+    margin-top: 2rem;
   }
 
   .left-column h1 {
@@ -83,10 +84,6 @@
   .left-column h5 {
     margin-top: 2rem;
     margin-bottom: 0.6rem;
-  }
-
-  .left-column .button-container {
-    margin-top: 2rem;
   }
 
   .body-text {
@@ -122,6 +119,11 @@
     .body-text {
       line-height: 1.5rem;
     }
+
+    .button-container {
+      width: 50%;
+    }
+
     .section {
       width: 100%;
       height: var(--app-height, 100vh);
