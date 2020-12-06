@@ -1,6 +1,4 @@
 <script>
-  import {} from 'svelte'
-
   export let steps = []
 </script>
 

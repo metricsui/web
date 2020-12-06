@@ -10,6 +10,10 @@
   } from './state/scroll'
   import { onMount } from 'svelte'
   import HowItAllStartedSection from './components/how-it-all-started/HowItAllStartedSection.svelte'
+  import HowDoISignUp from './components/HowDoISignUp.svelte'
+  import HowWeAreSolvingProblem from './components/HowWeAreSolvingProblem.svelte'
+  import WhatCanYouLearn from './components/what-can-you-learn/WhatCanYouLearn.svelte'
+  import ConvincedYet from './components/ConvincedYet.svelte'
 
   function scrollTo(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' })
@@ -26,6 +30,16 @@
 </script>
 
 <style>
+  #landing-wrapper {
+    --landing-section-padding-vertical: 5rem;
+  }
+
+  @media screen and (max-width: 640px) {
+    #landing-wrapper {
+      --landing-section-padding-vertical: 2rem;
+    }
+  }
+
   .wrapper {
     text-align: left;
     width: 100%;
@@ -51,10 +65,6 @@
   .body-text {
     line-height: 32px;
     letter-spacing: 0.15px;
-  }
-
-  .want-to-be-notified-text {
-    margin-bottom: 16px;
   }
 
   .button-container {
@@ -104,10 +114,6 @@
   }
 
   @media screen and (max-width: 640px) {
-    .wrapper {
-      /* scroll-snap-type: y mandatory; */
-    }
-
     .content-wrapper {
       margin: 0 var(--horizontal-margin);
     }
@@ -131,15 +137,6 @@
       max-width: 90%;
     }
 
-    h6 {
-      margin-top: 0;
-      font-size: 3rem;
-    }
-
-    .mobile-icon {
-      display: block;
-    }
-
     @keyframes slide {
       0% {
         bottom: 10%;
@@ -154,9 +151,6 @@
   }
 
   @media screen and (min-width: 640px) {
-    .desktop-arrow-icon {
-      display: block;
-    }
     @keyframes slide {
       0% {
         bottom: 5%;
@@ -174,9 +168,8 @@
   /* Footer CSS starts */
   footer {
     width: 100vw;
-    min-height: calc(0.25 * var(--app-height));
     background-color: #f1f1f1;
-    padding: 1rem var(--horizontal-margin);
+    padding: 2rem var(--horizontal-margin);
     display: flex;
     align-items: center;
   }
@@ -189,7 +182,7 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .logo-wrapper {
@@ -226,11 +219,8 @@
 
   @media screen and (max-width: 640px) {
     footer {
-      height: var(--app-height);
       padding-left: 0px;
       padding-right: 0px;
-      padding-top: 0;
-      padding-bottom: 0;
       justify-content: center;
       align-items: center;
       /* scroll-snap-align: center; */
@@ -238,6 +228,7 @@
 
     .limiter {
       flex-direction: column;
+      align-items: center;
     }
   }
   /* Footer CSS ends */
@@ -273,12 +264,16 @@
   </div>
 
   <HowItAllStartedSection />
+  <WhatCanYouLearn />
+  <HowWeAreSolvingProblem />
+  <HowDoISignUp />
+  <ConvincedYet />
   <!-- Content Ends-->
 
   <footer class="color-transition">
-    <div class="limiter" id="section-4">
-      <PartnersInImpact />
+    <div class="limiter" id="section-7">
       <EngageWithUs />
+      <PartnersInImpact />
     </div>
   </footer>
 </div>

@@ -42,7 +42,7 @@
 <div class="container">
   <h6>Partners in Impact</h6>
   <div class="partner-images-container">
-    {#each partners as partner, i}
+    {#each partners as partner}
       <img src={partner.imageURL} alt={partner.alt} />
     {/each}
   </div>
