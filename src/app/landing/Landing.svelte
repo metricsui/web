@@ -182,7 +182,7 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .logo-wrapper {
@@ -228,6 +228,7 @@
 
     .limiter {
       flex-direction: column;
+      align-items: center;
     }
   }
   /* Footer CSS ends */
