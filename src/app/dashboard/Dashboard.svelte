@@ -2,23 +2,16 @@
   import { onDestroy, onMount } from 'svelte'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
   import StickyNavbar from '../components/StickyNavbar.svelte'
-  import { isLoggedIn, dashboardApiStatus } from '../stores'
+  import { dashboardApiStatus } from '../stores'
   import { handleLogin, isReauthenticateNeeded } from '../utils'
   import UserSpace from './components/UserSpace.svelte'
   import { loadDashboard } from './actions'
   import { getNotificationsContext } from 'svelte-notifications'
 
+  const { addNotification } = getNotificationsContext()
   let unsubscribeApiStatus = null
 
-  const { addNotification } = getNotificationsContext()
-
-  onMount(() => {
-    console.log('hahaha')
-    if (!$isLoggedIn) {
-      handleLogin()
-      return
-    }
-
+  onMount(async () => {
     unsubscribeApiStatus = dashboardApiStatus.subscribe((currentApiStatus) => {
       if (isReauthenticateNeeded(currentApiStatus)) {
         addNotification({
@@ -32,7 +25,7 @@
 
       if (dashboardApiStatus.loaded && currentApiStatus.errorCode != null) {
         addNotification({
-          text: `Something wrong (${currentApiStatus.errorCode})`,
+          text: `Something went wrong, please try again (${currentApiStatus.errorCode})`,
           position: 'bottom-right',
           type: 'danger',
           removeAfter: 5000,
@@ -87,6 +80,10 @@
     }
   }
 </style>
+
+<svelte:head>
+  <title>Dashboard - Metrics</title>
+</svelte:head>
 
 <div class="wrapper">
   <StickyNavbar />

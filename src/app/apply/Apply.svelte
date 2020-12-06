@@ -2,7 +2,6 @@
   import { onMount } from 'svelte'
   import { user } from '../stores'
   import FullScreenLoadingIndicator from '../components/FullScreenLoadingIndicator.svelte'
-  import { authGuard } from '../utils'
 
   let isLoading = true
   let typeformUrl = 'https://form.typeform.com/to/nSJPlPY4'
@@ -21,7 +20,6 @@
   }
 
   onMount(async () => {
-    await authGuard()
     typeformUrl = `${typeformUrl}#${getHiddenFieldsParamsString()}`
     isLoading = false
   })

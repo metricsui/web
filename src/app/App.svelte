@@ -1,19 +1,28 @@
 <script>
   import Router, { replace } from 'svelte-spa-router'
+  import { wrap } from 'svelte-spa-router/wrap'
   import { onMount, onDestroy } from 'svelte'
   import {
     addColorSchemeEventListener,
     shouldUseDarkModeColorScheme,
   } from './utils'
   import { postAuthTicket } from './api'
-  import { authApiStatus, jwtToken } from './stores'
+  import {
+    authApiStatus,
+    jwtToken,
+    isLoggedIn,
+    isTokenStillValid,
+  } from './stores'
   import { syncCurrentUrlWithParams } from './utils'
   import Landing from './landing/Landing.svelte'
   import Dashboard from './dashboard/Dashboard.svelte'
   import Apply from './apply/Apply.svelte'
   import FullScreenLoadingIndicator from './components/FullScreenLoadingIndicator.svelte'
-  import { getNotificationsContext } from 'svelte-notifications'
   import Error403 from './Error403/Error403.svelte'
+  import NotFound from './components/NotFound.svelte'
+  import Unauthorized from './components/Unauthorized.svelte'
+  import { getNotificationsContext } from 'svelte-notifications'
+
   import { ERROR_CODE } from './constants'
 
   const { addNotification } = getNotificationsContext()
@@ -38,7 +47,10 @@
 
         if (status === 200 && data != null) {
           localStorage.token = data
-          replace('/dashboard')
+          const redirectUrl = !localStorage.redirectAfterLogin
+            ? '/dashboard'
+            : localStorage.redirectAfterLogin
+          replace(redirectUrl)
         } else {
           authApiStatus.set({
             errorCode: status,
@@ -51,16 +63,17 @@
           }
 
           addNotification({
-            text: `Login failed (${status})`,
-            position: 'bottom-right',
+            text: `Login failed. Please try again. (${status})`,
             type: 'danger',
-            removeAfter: 5000,
+            position: 'bottom-right',
+            removeAfter: 3000,
           })
         }
       } catch (error) {
         console.log(error)
       } finally {
         isSigningIn = false
+        localStorage.removeItem('redirectAfterLogin')
       }
       removeTicket()
     }
@@ -86,11 +99,38 @@
     window.document.body.classList.toggle('dark')
   }
 
+  let isUnauthorized = false
+  const authGuard = async () => {
+    if (!$isLoggedIn) {
+      return false
+    } else if (!$isTokenStillValid) {
+      return false
+    }
+    return true
+  }
+
   const routes = {
     '/403': Error403,
-    '/dashboard': Dashboard,
-    '/apply': Apply,
+    '/dashboard': wrap({
+      component: Dashboard,
+      conditions: [authGuard],
+      loadingComponent: FullScreenLoadingIndicator,
+      loadingParams: {
+        loadingText: 'Loading...',
+      },
+    }),
+    '/apply': wrap({
+      component: Apply,
+      conditions: [authGuard],
+    }),
     '/': Landing,
+    '*': NotFound,
+  }
+
+  // When auth guard fails
+  function onConditionsFailed() {
+    isUnauthorized = true
+    console.log('onConditionsFailed')
   }
 </script>
 
@@ -363,9 +403,14 @@
 </style>
 
 <main>
-  {#if !isSigningIn}
-    <Router {routes} />
-  {:else}
+  {#if isSigningIn}
     <FullScreenLoadingIndicator loadingText="Signing you in..." />
+  {:else if isUnauthorized}
+    <Unauthorized />
+  {:else}
+    <Router
+      {routes}
+      restoreScrollState={true}
+      on:conditionsFailed={onConditionsFailed} />
   {/if}
 </main>

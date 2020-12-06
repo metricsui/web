@@ -3,7 +3,8 @@ import { get } from 'svelte/store'
 
 import { ERROR_CODE } from './constants'
 import { DOMAIN } from './stores'
-import { jwtToken, isLoggedIn, isTokenStillValid } from './stores'
+import { jwtToken } from './stores'
+import { location as spaLocation } from 'svelte-spa-router'
 
 export function syncCurrentUrlWithParams(params) {
   const search = params.toString()
@@ -14,31 +15,13 @@ export function syncCurrentUrlWithParams(params) {
   window.history.replaceState(null, null, replacement)
 }
 
-function showAlert({ action }) {
-  // TODO: show sweet alert with single action button
-  action()
-}
-
-export async function authGuard() {
-  if (!get(isLoggedIn)) {
-    showAlert({
-      text: "You haven't sign-in yet. Please sign-in first.",
-      type: 'error',
-      action: handleLogin,
-    })
-    return
-  }
-  if (!get(isTokenStillValid)) {
-    showAlert({
-      text: 'Your session has expired. Please sign-in again.',
-      type: 'warning',
-      action: handleLogin,
-    })
-    return
-  }
-}
-
 export function handleLogin() {
+  const currentLocation = get(spaLocation)
+  console.log('currentLoc: ', currentLocation)
+  if (currentLocation && currentLocation !== '/') {
+    localStorage.redirectAfterLogin = currentLocation
+  }
+
   location.href = `https://akun-kp.cs.ui.ac.id/cas/login?service=${DOMAIN}`
 }
 
