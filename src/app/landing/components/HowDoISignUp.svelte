@@ -2,6 +2,10 @@
 </script>
 
 <style>
+  .section {
+    padding: var(--landing-section-padding-vertical) var(--horizontal-margin);
+  }
+
   .steps-container {
     position: relative;
     list-style: none;
@@ -42,40 +46,42 @@
   }
 </style>
 
-<h5>How do I sign up?</h5>
-<ul class="steps-container">
-  <li class="font-normal step-item">
-    Apply from this website
-    <!-- TODO: change href to fix URL -->
-    <a class="primary-color" href="/#/apply">here</a>
-  </li>
-  <li class="font-normal step-item">
-    Choose
-    <span class="primary-color">one</span>
-    of the four fields in your application
-  </li>
-  <li class="font-normal step-item">
-    Once submitted,
-    <span class="primary-color">check your email</span>
-    for assignments
-  </li>
-  <li class="font-normal step-item">
-    Submit your finished assignment to
-    <a
-      class="primary-color"
-      href="mailto:metricsui@gmail.com">metricsui@gmail.com</a>
-  </li>
-  <li class="font-normal step-item">
-    Wait for
-    <span class="primary-color">x days</span>
-    to get called for an interview
-  </li>
-  <li class="font-normal step-item">
-    Give
-    <span class="primary-color">your best</span>
-    on the interview
-  </li>
-  <li class="font-bold primary-color step-item">
-    Become our first batch mentees!
-  </li>
-</ul>
+<div class="section" id="section-5">
+  <h6 class="primary-color">How it all started</h6>
+  <ul class="steps-container">
+    <li class="font-normal step-item">
+      Apply from this website
+      <!-- TODO: change href to fix URL -->
+      <a class="primary-color" href="/#/apply">here</a>
+    </li>
+    <li class="font-normal step-item">
+      Choose
+      <span class="primary-color">one</span>
+      of the four fields in your application
+    </li>
+    <li class="font-normal step-item">
+      Once submitted,
+      <span class="primary-color">check your email</span>
+      for assignments
+    </li>
+    <li class="font-normal step-item">
+      Submit your finished assignment to
+      <a
+        class="primary-color"
+        href="mailto:metricsui@gmail.com">metricsui@gmail.com</a>
+    </li>
+    <li class="font-normal step-item">
+      Wait for
+      <span class="primary-color">x days</span>
+      to get called for an interview
+    </li>
+    <li class="font-normal step-item">
+      Give
+      <span class="primary-color">your best</span>
+      on the interview
+    </li>
+    <li class="font-bold primary-color step-item">
+      Become our first batch mentees!
+    </li>
+  </ul>
+</div>

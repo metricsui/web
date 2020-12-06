@@ -29,13 +29,16 @@
     margin-top: 0;
   }
 
+  .container {
+    padding-bottom: 2.5rem;
+  }
+
   @media screen and (max-width: 600px) {
     .container {
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-top: 2.5rem;
     }
   }
 </style>

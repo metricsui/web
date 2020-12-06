@@ -4,12 +4,7 @@
 
 <style>
   .wrapper {
-    padding: 5rem var(--horizontal-margin);
-    min-height: var(--app-height);
-  }
-
-  .wrapper h3 {
-    margin-top: 1rem;
+    padding: var(--landing-section-padding-vertical) var(--horizontal-margin);
   }
 
   .wrapper p {
