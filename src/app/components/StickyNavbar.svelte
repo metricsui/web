@@ -41,7 +41,6 @@
 
   .drawer {
     position: relative;
-    background-color: rgba(33, 33, 33, 0.4);
   }
 
   .drawer-open {
@@ -49,7 +48,6 @@
   }
 
   .nav-content {
-    background-color: var(--bg-color);
     padding-top: 1rem;
     padding-bottom: 1rem;
     box-sizing: border-box;
@@ -63,7 +61,6 @@
   }
 
   .drawer-content {
-    background-color: var(--bg-color);
     padding: 1rem 2rem;
     z-index: 10;
     display: flex;
@@ -98,6 +95,20 @@
     width: 1.5rem;
     height: 1.5rem;
     color: var(--text-color);
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-content {
+      background: var(--bg-color);
+    }
+
+    .drawer-content {
+      background-color: var(--bg-color);
+    }
+
+    .drawer {
+      background-color: rgba(33, 33, 33, 0.4);
+    }
   }
 </style>
 
