@@ -47,6 +47,7 @@
 
         if (status === 200 && data != null) {
           localStorage.token = data
+          jwtToken.set(data)
           const redirectUrl = !localStorage.redirectAfterLogin
             ? '/dashboard'
             : localStorage.redirectAfterLogin
