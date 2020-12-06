@@ -27,7 +27,7 @@
 
   .mentor-photo {
     position: relative;
-    width: 100%;
+    width: 14rem;
     height: 14rem;
     margin-bottom: 1rem;
     box-sizing: border-box;
