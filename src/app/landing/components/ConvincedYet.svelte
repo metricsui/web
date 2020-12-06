@@ -19,6 +19,12 @@
     }
   }
 
+  @media screen and (max-width: 1024px) {
+    #section-6 .secondary-button {
+      max-width: min(50%, 200px);
+    }
+  }
+
   .help-us-text {
     padding-top: 1.5rem;
     padding-bottom: 0.5rem;
