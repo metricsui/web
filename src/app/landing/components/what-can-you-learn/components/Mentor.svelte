@@ -2,8 +2,7 @@
   export let mentorName
   export let introduction
   export let institution
-  export let photoUrl =
-    'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg'
+  export let photoUrl
 </script>
 
 <style>

@@ -106,7 +106,8 @@
               <Mentor
                 mentorName={mentor.mentorName}
                 introduction={mentor.introduction}
-                institution={mentor.institution} />
+                institution={mentor.institution}
+                photoUrl={mentor.photoUrl} />
             {/each}
           </div>
         </div>

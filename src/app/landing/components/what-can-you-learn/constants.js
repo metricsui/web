@@ -8,21 +8,29 @@ export const PATHS = [
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
     ],
   },
@@ -45,21 +53,29 @@ export const PATHS = [
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
       {
         mentorName: 'Albert',
         introduction: 'Software Engineer @Shopee, former SE Intern @Dekoruma',
         institution: 'CSUI 2016',
+        photoUrl:
+          'https://miro.medium.com/max/3150/2*ibD2zf8eTt6CnYM1nN8dHg.jpeg',
       },
     ],
   },
