@@ -22,7 +22,7 @@
         redirectIn -= 1
         if (redirectIn === 0) {
           clearInterval(updateRedirectInInterval)
-          // handleLogin()
+          handleLogin()
         }
       }, 1000)
     }
