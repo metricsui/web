@@ -56,7 +56,7 @@
   </div>
   <div class="registration-text">
     Registration opens now until
-    <span class="font-bold">16th December 2020 at 23.55 (GMT+7)</span>
+    <span class="font-bold">20th December 2020 at 23.55 (GMT+7)</span>
   </div>
   <a class="secondary-button" href="/#/apply?force_login=true"> Start now </a>
 </div>
