@@ -159,8 +159,7 @@
               const mins = Math.floor(secs / 60)
               const hours = Math.floor(mins / 60)
               const days = Math.floor(hours / 24)
-
-              const val = days ?? hours ?? mins ?? secs
+              const val = days || hours || mins || secs
               const desc = val > 0 ? ' left' : ''
               // prettier-ignore
               const unit = days > 0 ? 
